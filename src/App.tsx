@@ -1,7 +1,7 @@
 export default function App() {
   return (
     <>
-      Olá Mundo!!
+      <h1>Olá Mundo!!</h1>
     </>
   );
 }
