@@ -18,6 +18,7 @@ declare module 'styled-components' {
       primary: {
         [100]: string,
         [200]: string,
+        [300]: string,
       },
       neutral: {
         [100]: string,
@@ -26,6 +27,7 @@ declare module 'styled-components' {
         [400]: string,
         [500]: string,
         [600]: string,
+        [700]: string,
       }
     }
   }
