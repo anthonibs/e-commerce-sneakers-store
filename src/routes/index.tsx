@@ -11,6 +11,7 @@ import Women from 'pages/Women';
 import About from 'pages/About';
 import Contact from 'pages/Contact';
 import Cart from 'pages/Cart';
+import ProductItem from 'components/ProductItem';
 
 const AppRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
           <Route index element={<Home />} />
           <Route path='/collections' element={<Collections />} />
           <Route path='/men' element={<Men />} />
+          <Route path='/men/:orderID' element={<ProductItem />} />
           <Route path='/women' element={<Women />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
