@@ -8,7 +8,7 @@ export const Container = styled.div`
     max-width: 1400px;
     margin: 0 auto;
     height: 100%;
-    padding-top: 100px;
+    padding-top: 7.25rem;
     min-height: calc(100vh - 260px);
   }
 `;

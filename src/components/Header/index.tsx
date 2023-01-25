@@ -2,18 +2,22 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 import { ButtonCartMenu, HeaderContainer } from './Header';
 
-
 import Logo from 'components/svgs/Logo';
 import IconCart from 'components/svgs/IconCart';
 import profileImg from 'assets/images/image-avatar.png';
+import { useCartContext } from 'shared/hooks/useCart';
 
 const Header = () => {
 
   const navigate = useNavigate();
+  const { totalQuantity } = useCartContext();
 
   function handlerNavigateToCart() {
     navigate('/cart');
   }
+
+  const isProductCart = totalQuantity?.totalQuantity === undefined || totalQuantity?.totalQuantity === 0 ? true : false;
+
 
   return (
     <HeaderContainer>
@@ -65,11 +69,11 @@ const Header = () => {
           <div className='menu-profile'>
             <ButtonCartMenu
               onClick={handlerNavigateToCart}
-              disabled={true}
+              disabled={isProductCart}
             >
               <IconCart />
               <span className='items-cart'>
-                7
+                {!isProductCart && totalQuantity?.totalQuantity}
               </span>
             </ButtonCartMenu>
 

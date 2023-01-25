@@ -16,6 +16,9 @@ export const HeaderContainer = styled.header`
   background-color: ${({ theme }) => theme.colors.neutral[500]};
   width: 100%;
   height: 100px;
+  z-index: 1000;
+  box-sizing: content-box;
+  padding-bottom: 1rem;
 
   > div {
     width: 80%;
@@ -85,6 +88,15 @@ export const HeaderContainer = styled.header`
     }
 
     figure {
+      border: 2px solid transparent;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: border .5s ease-out;
+
+      &:hover {
+        border: 2px solid  ${({ theme }) => theme.colors.primary[100]};
+      }
+
       img {
         display: block;
         height: 50px;
@@ -110,7 +122,7 @@ export const ButtonCartMenu = styled.button<IButtonCartMenuProps>`
   cursor: pointer;
   border-radius: 25px;
   transition: background .3s ease-in-out;
-  opacity: ${({disabled}) => disabled ? '.2' : '1'};
+  opacity: ${({ disabled }) => disabled ? '.2' : '1'};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.neutral[400]};
@@ -121,7 +133,7 @@ export const ButtonCartMenu = styled.button<IButtonCartMenuProps>`
   }
 
   .items-cart {
-    display: ${({disabled}) => disabled ? 'none' : 'block'};
+    display: ${({ disabled }) => disabled ? 'none' : 'block'};
     right: -8px;
     top: -8px;
     position: absolute;
