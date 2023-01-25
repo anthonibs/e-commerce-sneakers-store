@@ -35,7 +35,7 @@
       "title": "Adidas 4DFWD 2 Running Shoes",
       "description": "The adidas 4DFWD 2 redefines evolution, combining the unique innovation of a pioneering 3D-printed midsole with a new upper structure and a Continental outsole for superior grip. The adidas 4DFWD 2 midsole compresses and reduces braking forces, turning impact energy into momentum with every step.",
       "price": 1599.99,
-      "discountPercentage": 12.96,
+      "discountPercentage": null,
       "rating": 4.69,
       "stock": 14,
       "brand": "Adidas",
@@ -54,7 +54,7 @@
       "title": "SNEAKERS ULTRABOOST 22",
       "description": "Probably the most comfortable running shoe we've ever made. Ultraboost 22 ensures a responsive run, whatever your training level or distance covered. Comfort is provided by the cozy adidas PRIMEKNIT upper and the incredible energy return of BOOST.",
       "price": 1299.99,
-      "discountPercentage": 5,
+      "discountPercentage": null,
       "rating": 4.9,
       "stock": 4,
       "brand": "Adidas",
@@ -206,7 +206,7 @@
       "title": "Men's Adventure Conforto Boots",
       "description": "Adventure Boots and Modern Rubberized Sole and Sewing Quality Synthetic Material Comfort for all your adventures For Adventure days.",
       "price": 149.90,
-      "discountPercentage": 7.5,
+      "discountPercentage": null,
       "rating": 2.76,
       "stock": 2,
       "brand": "QueroShoes",
@@ -282,7 +282,7 @@
       "title": "Men's Casual Polo Shoes",
       "description": "Men's Shoes Polo Blu Comfort Casual !! Â The Sapatenis Polo Blu, is a basic model and at the same time modern, thus bringing the ease of fitting into any Look, from the Casual Model, to the most daring. Resistant product that provides great grip when walking.",
       "price": 69.89,
-      "discountPercentage": 3,
+      "discountPercentage": null,
       "rating": 3.33,
       "stock": 23,
       "brand": "Polo",
@@ -358,7 +358,7 @@
       "title": "Anthony Veer Roosevelt II Double Monk Strap Slip-On",
       "description": "The classic style and craftsmanship make the Anthony Veer Roosevelt II double monk strap slip-on an embodiment of sophistication. Boasting a Goodyear welt construction, this dress shoe comes with a full grain leather upper and is grounded with a recraftable leather outsole.",
       "price": 1083.94,
-      "discountPercentage": 1,
+      "discountPercentage": null,
       "rating": 5,
       "stock": 5,
       "brand": "Nordstrom",
@@ -408,6 +408,24 @@
         "MILITARY-BOOTS-STEEL-SNIPER-DESERT-1",
         "MILITARY-BOOTS-STEEL-SNIPER-DESERT-2",
         "MILITARY-BOOTS-STEEL-SNIPER-DESERT-4"
+      ]
+    },
+    {
+      "id": 21,
+      "title": "Fall Limited Edition Sneakers",
+      "description": "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.",
+      "price": 250,
+      "discountPercentage": 50,
+      "rating": 4.19,
+      "stock": 3,
+      "brand": "Adidas",
+      "category_id": 7,
+      "thumbnail": "image-product-1",
+      "images": [
+        "image-product-1",
+        "image-product-2",
+        "image-product-3",
+        "image-product-4"
       ]
     }
   ]
