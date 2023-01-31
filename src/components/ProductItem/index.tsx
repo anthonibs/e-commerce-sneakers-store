@@ -1,16 +1,37 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import ProductService from 'server/ProductService';
 
+import { useCartContext } from 'shared/hooks/useCart';
 import { IProduct } from 'shared/interfaces/ProductsInterfaces';
+import priceFormatted from 'shared/utils/priceFormatted';
 
-import { Container } from './ProductItem';
-import priceFormatted from 'utils/priceFormatted';
+import {
+  AddProductCart,
+  ButtonCart,
+  Company,
+  Container,
+  ContainerInfo,
+  ControlButtonCart,
+  CurrentPrice,
+  DescriptionWrap,
+  PreviousPrice,
+  PriceWrap,
+  ProductDiscount,
+  ProductName,
+  QuantityProduct,
+  TextDescription,
+  TitleContainer,
+  Wrapper,
+  WrapperButton
+} from './ProductItem';
+
+import SliderProduct from 'components/SliderProduct';
 import IconCart from 'components/svgs/IconCart';
 import IconMinus from 'components/svgs/IconMinus';
 import IconPlus from 'components/svgs/IconPlus';
-import { useCartContext } from 'shared/hooks/useCart';
+
 
 type IParams = {
   orderID: string
@@ -23,10 +44,10 @@ const ProductItem = () => {
 
   // Hooks
   const { orderID } = useParams() as IParams;
+  const navigate = useNavigate();
 
   // Hooks Custom
-  const { listCart, handleMinusCart, handlePlusCart, handleAddCart } = useCartContext();
-
+  const { listCart, handleMinusCart, handlePlusCart } = useCartContext();
 
   const loadProduct = useCallback(async () => {
     try {
@@ -49,12 +70,13 @@ const ProductItem = () => {
     thumbnail
   } = product;
 
-
-
   useEffect(() => {
     loadProduct();
   }, [loadProduct]);
 
+  function handleAddCart() {
+    navigate('/cart');
+  }
 
   const productAddToCart = listCart.find((product: IProduct) => product.id === id);
   const quantityLessThanZero = (productAddToCart?.quantity === undefined && -1 <= 0);
@@ -63,69 +85,73 @@ const ProductItem = () => {
 
   return (
     <Container>
-      <article>
-        <figure>
-          <img
-            src={`/assets/products-shoes/${thumbnail}.webp`}
-            alt={title} />
-        </figure>
+      <Wrapper>
+        <SliderProduct
+          thumbnail={thumbnail}
+          slider={images}
+          title={title}
+        />
 
-        <div>
-          <header>
-            <span>sneaker company</span>
-            <h2>{title}</h2>
-          </header>
+        <ContainerInfo>
+          <TitleContainer>
+            <Company>sneaker company</Company>
+            <ProductName>{title}</ProductName>
+          </TitleContainer>
 
-          <div className='description-wrap'>
-            <p>{description}</p>
+          <DescriptionWrap>
+            <TextDescription>
+              {description}
+            </TextDescription>
 
-            <div className='current-price'>
-              <span className='price'>
+            <PriceWrap>
+              <CurrentPrice>
                 {priceFormatted(price * (1 - (discountPercentage === null ? 0 : discountPercentage / 100)))}
-              </span>
+              </CurrentPrice>
               {discountPercentage !== null
                 &&
-                <span className='discount'>
+                <ProductDiscount>
                   {discountPercentage}%
-                </span>
+                </ProductDiscount>
               }
-            </div>
+            </PriceWrap>
             {discountPercentage !== null
               &&
-              <span className='previous-price'>
+              <PreviousPrice>
                 {priceFormatted(price)}
-              </span>
+              </PreviousPrice>
             }
-          </div>
+          </DescriptionWrap>
 
-          <div className='wrapper-button'>
-            <div className='control-button-cart'>
-              <button
-                className='minus'
+          <WrapperButton>
+            <ControlButtonCart>
+              <ButtonCart
                 onClick={() => handleMinusCart(id)}
-                disabled={quantityLessThanZero}>
+                disabled={quantityLessThanZero}
+              >
                 <IconMinus />
-              </button>
+              </ButtonCart>
 
-              <span className='quantity'>
+              <QuantityProduct>
                 {productAddToCart?.quantity || 0}
-              </span>
+              </QuantityProduct>
 
-              <button
-                className='plus'
+              <ButtonCart
                 onClick={() => handlePlusCart(product)}
-                disabled={quantityGreaterThanStock}>
+                disabled={quantityGreaterThanStock}
+              >
                 <IconPlus />
-              </button>
-            </div>
+              </ButtonCart>
+            </ControlButtonCart>
 
-            <button className='button-add-cart' onClick={handleAddCart}>
+            <AddProductCart
+              onClick={handleAddCart}
+            >
               <IconCart />
               Add to cart
-            </button>
-          </div>
-        </div>
-      </article>
+            </AddProductCart>
+          </WrapperButton>
+        </ContainerInfo>
+      </Wrapper>
     </Container >
   );
 };
