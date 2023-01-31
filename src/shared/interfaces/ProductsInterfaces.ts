@@ -11,4 +11,5 @@ export interface IProduct {
   thumbnail: string;
   images: string[];
   quantity: number;
+  priceCurrent: number;
 }
