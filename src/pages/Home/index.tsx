@@ -1,13 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
 
+import { Container, ListContainer, ListItem } from './Home';
+
 import BannerMain from 'components/BannerMain';
 import CardItem from 'components/CardItem';
 
 import { IProduct } from 'shared/interfaces/ProductsInterfaces';
 import ProductsService from 'server/ProductsService';
 
-import { Container } from './Home';
 
 
 const Home = () => {
@@ -41,7 +42,7 @@ const Home = () => {
     },
     {
       image: 'assets/banners/ready-for-sport.png',
-      link: 'men/Mizuno%20Frontier%2013%20Men\'s%20Running%20Shoes',
+      link: 'men/1',
       title: 'Ready for Sport',
     },
   ];
@@ -93,13 +94,13 @@ const Home = () => {
           />)}
       </Carousel>
 
-      <ul>
+      <ListContainer>
         {products.map((product: IProduct) => (
-          <li key={product.id}>
+          <ListItem key={product.id}>
             <CardItem key={product.id} {...product} />
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </ListContainer>
     </Container >
   );
 };
