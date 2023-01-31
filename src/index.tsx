@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from 'styles/GlobalStyles';
 import themeStyle from 'styles/theme';
 import AppRoutes from 'routes';
+import { CartProvider } from 'shared/hooks/useCart';
 
 
 const root = ReactDOM.createRoot(
@@ -14,7 +15,9 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={themeStyle}>
       <GlobalStyles />
-      <AppRoutes />
+      <CartProvider>
+        <AppRoutes />
+      </CartProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
