@@ -18,15 +18,11 @@ interface ICartProvider {
   setListCart: React.Dispatch<React.SetStateAction<ICartProvider[]>>;
   quantity: IQuantity;
   setQuantity: React.Dispatch<React.SetStateAction<IQuantity>>
-  totalQuantity: IQuantity;
-  setTotalQuantity: React.Dispatch<React.SetStateAction<IQuantity>>;
 }
 
 export const CartProvider = ({ children }: ICartProviderProps) => {
   const [listCart, setListCart] = useState<ICartProvider[]>([]);
   const [quantity, setQuantity] = useState<IQuantity>({} as IQuantity);
-  const [totalQuantity, setTotalQuantity] = useState<IQuantity>({} as IQuantity);
-
 
   return (
     <CartContext.Provider
@@ -35,8 +31,6 @@ export const CartProvider = ({ children }: ICartProviderProps) => {
         setListCart,
         quantity,
         setQuantity,
-        totalQuantity,
-        setTotalQuantity
       }}
     >
       {children}
@@ -47,13 +41,13 @@ export const CartProvider = ({ children }: ICartProviderProps) => {
 
 export const useCartContext = () => {
 
-  const { listCart, setListCart, quantity, setQuantity, totalQuantity, setTotalQuantity } = useContext<any>(CartContext);
+  const { listCart, setListCart, quantity, setQuantity } = useContext<any>(CartContext);
 
 
   function changeQuantity(id: number, quantity: number) {
-    return listCart.map((itemDoCarrinho: any) => {
-      if (itemDoCarrinho.id === id) itemDoCarrinho.quantity += quantity;
-      return itemDoCarrinho;
+    return listCart.map((product: IProduct) => {
+      if (product.id === id) product.quantity += quantity;
+      return product;
     });
   }
 
@@ -72,16 +66,20 @@ export const useCartContext = () => {
   function handlePlusCart(newProduct: IProduct) {
     const existProduct = listCart.some((product: IProduct) => product.id === newProduct.id);
 
+    const valueDiscount = (1 - (newProduct.discountPercentage === null ? 0 : newProduct.discountPercentage) / 100);
+
     if (!existProduct) {
       newProduct.quantity = 1;
+      newProduct.priceCurrent = newProduct.quantity * (newProduct.price * valueDiscount);
+
       return setListCart((prevState: IProduct[]) =>
         [...prevState, newProduct]);
     }
     setListCart(changeQuantity(newProduct.id, 1));
   }
 
-  function handleAddCart() {
-    setTotalQuantity(quantity);
+  function handlerRemoveProductCart(id: number) {
+    setListCart((prevState: IProduct[]) => prevState.filter((item: IProduct) => item.id !== id));
   }
 
 
@@ -95,7 +93,7 @@ export const useCartContext = () => {
       totalQuantity: 0,
       totalValue: 0
     });
-    
+
     setQuantity(totalCart);
 
   }, [listCart, setQuantity]);
@@ -105,8 +103,8 @@ export const useCartContext = () => {
     setListCart,
     handleMinusCart,
     handlePlusCart,
-    handleAddCart,
-    totalQuantity,
+    quantity,
+    handlerRemoveProductCart
   };
 
 };
