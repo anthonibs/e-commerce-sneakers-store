@@ -1,49 +1,65 @@
 import { Link } from 'react-router-dom';
 
-import { FooterContainer } from './Footer';
+import {
+  Address,
+  AddressTitle,
+  Container,
+  FooterContainer,
+  GroupLink,
+  ListItem,
+  ListItems,
+  SocialNetwork,
+  Title
+} from './Footer';
 
-import { AiFillFacebook, AiFillInstagram, AiFillTwitterSquare, AiFillYoutube } from 'react-icons/ai';
+import {
+  AiFillFacebook,
+  AiFillInstagram,
+  AiFillTwitterSquare,
+  AiFillYoutube
+} from 'react-icons/ai';
+
 const Footer = () => {
   return (
     <FooterContainer>
-      <div className='container'>
-        <div className='footer-group'>
-          <h3>Help</h3>
-          <ul>
-            <li>
+      <Container>
+        <GroupLink>
+          <Title>Help</Title>
+          <ListItems>
+            <ListItem>
               <Link to="#">About Sneaker Company</Link>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               <Link to="#">Deadline</Link>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               <Link to="#">Exchanges and Returns</Link>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               <Link to="#">Shipping Conditions</Link>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               <Link to="#">Work With Us</Link>
-            </li>
-          </ul>
-        </div>
+            </ListItem>
+          </ListItems>
+        </GroupLink>
 
-        <div className='footer-group'>
-          <h3>My account</h3>
-          <ul>
-            <li>
+        <GroupLink>
+          <Title>My account</Title>
+          <ListItems>
+            <ListItem>
               <Link to="#">My ordered</Link>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               <Link to="#">Login</Link>
-            </li>
-          </ul>
-        </div>
+            </ListItem>
+          </ListItems>
+        </GroupLink>
 
-        <div className='footer-group'>
-          <h3>Social networks</h3>
-
-          <div>
+        <GroupLink>
+          <Title>Social networks</Title>
+          
+          <SocialNetwork>
             <Link to={'#'}>
               <AiFillFacebook />
             </Link>
@@ -56,13 +72,13 @@ const Footer = () => {
             <Link to={'#'}>
               <AiFillYoutube />
             </Link>
-          </div>
+          </SocialNetwork>
 
-          <address>
-            <p>sac@sneakers.email.com</p>
-          </address>
-        </div>
-      </div>
+          <Address>
+            <AddressTitle>sac@sneakers.email.com</AddressTitle>
+          </Address>
+        </GroupLink>
+      </Container>
     </FooterContainer>
   );
 };

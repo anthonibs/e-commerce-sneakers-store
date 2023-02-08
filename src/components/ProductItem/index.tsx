@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import ProductService from 'server/ProductService';
@@ -23,14 +23,14 @@ import {
   QuantityProduct,
   TextDescription,
   TitleContainer,
-  Wrapper,
+  Article,
   WrapperButton
 } from './ProductItem';
 
+import { HiMinus, HiPlus } from 'react-icons/hi';
+
 import SliderProduct from 'components/SliderProduct';
 import IconCart from 'components/svgs/IconCart';
-import IconMinus from 'components/svgs/IconMinus';
-import IconPlus from 'components/svgs/IconPlus';
 
 
 type IParams = {
@@ -85,7 +85,7 @@ const ProductItem = () => {
 
   return (
     <Container>
-      <Wrapper>
+      <Article>
         <SliderProduct
           thumbnail={thumbnail}
           slider={images}
@@ -104,22 +104,28 @@ const ProductItem = () => {
             </TextDescription>
 
             <PriceWrap>
-              <CurrentPrice>
-                {priceFormatted(price * (1 - (discountPercentage === null ? 0 : discountPercentage / 100)))}
-              </CurrentPrice>
-              {discountPercentage !== null
-                &&
-                <ProductDiscount>
-                  {discountPercentage}%
-                </ProductDiscount>
-              }
+              <div>
+                <CurrentPrice>
+                  {priceFormatted(price * (1 - (discountPercentage === null ? 0 : discountPercentage / 100)))}
+                </CurrentPrice>
+
+                {discountPercentage !== null
+                  &&
+                  <ProductDiscount>
+                    {discountPercentage}%
+                  </ProductDiscount>
+                }
+              </div>
+
+              <div>
+                {discountPercentage !== null
+                  &&
+                  <PreviousPrice>
+                    {priceFormatted(price)}
+                  </PreviousPrice>
+                }</div>
             </PriceWrap>
-            {discountPercentage !== null
-              &&
-              <PreviousPrice>
-                {priceFormatted(price)}
-              </PreviousPrice>
-            }
+
           </DescriptionWrap>
 
           <WrapperButton>
@@ -128,7 +134,7 @@ const ProductItem = () => {
                 onClick={() => handleMinusCart(id)}
                 disabled={quantityLessThanZero}
               >
-                <IconMinus />
+                <HiMinus />
               </ButtonCart>
 
               <QuantityProduct>
@@ -139,7 +145,7 @@ const ProductItem = () => {
                 onClick={() => handlePlusCart(product)}
                 disabled={quantityGreaterThanStock}
               >
-                <IconPlus />
+                <HiPlus />
               </ButtonCart>
             </ControlButtonCart>
 
@@ -151,9 +157,9 @@ const ProductItem = () => {
             </AddProductCart>
           </WrapperButton>
         </ContainerInfo>
-      </Wrapper>
+      </Article>
     </Container >
   );
 };
 
-export default ProductItem;
+export default memo(ProductItem);

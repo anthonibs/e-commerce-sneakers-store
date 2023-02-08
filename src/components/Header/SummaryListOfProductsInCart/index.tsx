@@ -23,7 +23,6 @@ import IconDelete from 'components/svgs/IconDelete';
 
 const SummaryListOfProductsInCart = () => {
   const { listCart, handlerRemoveProductCart } = useCartContext();
-
   const navigate = useNavigate();
 
   function handleShopCart() {

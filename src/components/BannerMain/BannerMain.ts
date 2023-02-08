@@ -7,8 +7,8 @@ interface IBannerProps {
 }
 
 export const BannerContainer = styled.figure<IBannerProps>`
-  width: ${({ width }) => width};
   height: ${({ height }) => height};
+  width: ${({ width }) => width};
 
   a {
     height: inherit;
@@ -17,8 +17,8 @@ export const BannerContainer = styled.figure<IBannerProps>`
 
   img {
     display: block;
-    width: inherit;
     height: inherit;
     object-fit: ${({ objectFit }) => objectFit};
+    width: inherit;
   }
 `;

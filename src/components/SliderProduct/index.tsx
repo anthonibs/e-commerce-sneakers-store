@@ -1,17 +1,17 @@
-import { memo, useState } from 'react';
+import { memo, useCallback, useMemo, useState } from 'react';
 
 import IconClose from 'components/svgs/IconClose';
 import IconNext from 'components/svgs/IconNext';
 import IconPrevious from 'components/svgs/IconPrevious';
 
 import {
-  Banner,
   ButtonControl,
   CardOverlay,
   ClosedOverlayCard,
   Container,
   GalleriesProducts,
   GalleryProduct,
+  ImageModalMain,
   MainImage,
   MainProductImage,
   NextSlider,
@@ -32,42 +32,69 @@ const SliderProduct = ({ thumbnail, slider, title }: ISliderProduct) => {
   const [overlayImageProduct, setOverlayImageProduct] = useState<boolean>(false);
   const [indexImage, setIndexImage] = useState<number>(0);
 
-  function openImageIndex(index: number) {
+  const openImageIndex = useCallback((index: number) => {
     setOverlayImageProduct(true);
     setIndexImage(index);
-  }
+  }, []);
 
-  function previousSlider(index: number) {
+  const previousSlider = useCallback((index: number) => {
     if (index > 0) {
       setIndexImage(prevState => prevState - 1);
     }
     if (index <= 0) {
       setIndexImage(slider?.length - 1);
     }
-  }
+  }, [slider?.length]);
 
-  function nextSlider(index: number) {
+
+  const nextSlider = useCallback((index: number) => {
     if (slider?.length > index) {
       setIndexImage(prevState => prevState + 1);
     }
     if (slider?.length - 1 === index) {
       setIndexImage(0);
     }
-  }
+  }, [slider?.length]);
+
+  const width = window.innerWidth;
+
+  const innerWidth = useMemo(() => {
+    return width;
+  }, [width]);
 
 
   return (
-
     <Container>
       <MainProductImage>
-        <img
-          src={`/assets/products-shoes/${thumbnail}.webp`}
-          alt={title}
-        />
+        <PreviousSlider className='previous-slider'>
+          <ButtonControl onClick={() => previousSlider(indexImage)}>
+            <IconPrevious />
+          </ButtonControl>
+        </PreviousSlider>
+
+        {innerWidth < 1000
+          ?
+          <ImageModalMain
+            src={`/assets/products-shoes/${slider?.[indexImage]}.webp`}
+            alt={title}
+          />
+          : <ImageModalMain
+            src={`/assets/products-shoes/${thumbnail}.webp`}
+            alt={title}
+          />
+        }
+
+        <NextSlider className='next-slider'>
+          <ButtonControl onClick={() => nextSlider(indexImage)}>
+            <IconNext />
+          </ButtonControl>
+        </NextSlider>
       </MainProductImage>
 
-      <GalleriesProducts>
-        {slider
+      {innerWidth 
+        &&
+        <GalleriesProducts>
+          {slider
           && slider?.map((image: string, index: number) => (
             <GalleryProduct key={index}
               onClick={() => openImageIndex(index)}
@@ -78,7 +105,8 @@ const SliderProduct = ({ thumbnail, slider, title }: ISliderProduct) => {
               />
             </GalleryProduct>
           ))}
-      </GalleriesProducts>
+        </GalleriesProducts>
+      }
 
       {overlayImageProduct
         && <OverlayImage>
@@ -96,9 +124,10 @@ const SliderProduct = ({ thumbnail, slider, title }: ISliderProduct) => {
                 </ButtonControl>
               </PreviousSlider>
 
-              <Banner>
-                <img src={`/assets/products-shoes/${slider?.[indexImage]}.webp`} alt="Imagem teste" />
-              </Banner>
+              <ImageModalMain
+                src={`/assets/products-shoes/${slider?.[indexImage]}.webp`}
+                alt="Imagem teste"
+              />
 
               <NextSlider>
                 <ButtonControl onClick={() => nextSlider(indexImage)}>

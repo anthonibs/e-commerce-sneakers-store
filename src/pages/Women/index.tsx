@@ -2,7 +2,7 @@
 const Women = () => {
   return (
     <div>
-      Women
+      <h1>Women</h1>
     </div>
   );
 };

@@ -26,9 +26,27 @@ const fade = keyframes`
 
 
 export const Container = styled.div`
-  border-radius: .325rem;
   background-color: ${({theme}) => theme.colors.neutral[400]};
   height: fit-content;
+  position: relative;
+ 
+  @media (min-width: 375px) {
+      & + &::before {
+      content: '';
+      position: absolute;
+      width: 48%;
+      height: 3px;
+      top: -.5rem;
+      background-color: ${({theme}) => theme.colors.neutral[300]};
+      border-radius: 8px;
+    } 
+  }
+
+  @media (min-width: 768px) {
+    & + &::before {
+      width: 68%;
+    } 
+  }
 `;
 
 interface ITitleFilter {
@@ -36,23 +54,31 @@ interface ITitleFilter {
 }
 
 export const TitleFilter = styled.span<ITitleFilter>`
-  align-items: center;
-  border-radius: .2rem;
-  background-color: ${({theme}) => theme.colors.primary[100]};
-  cursor: pointer;
-  color:  ${({theme}) => theme.colors.neutral[500]};
-  display: flex;
-  font-size: .725rem;
-  font-weight: ${({theme}) => theme.font.weights[700]};
-  height: 35px;
-  justify-content: space-between;
-  letter-spacing: 2px;
-  padding: 0 1rem;
-  text-transform: uppercase;
+  @media (min-width: 375px) {
+    align-items: center;
+    border-radius: .2rem;
+    background-color: ${({theme}) => theme.colors.primary[100]};
+    cursor: pointer;
+    color:  ${({theme}) => theme.colors.neutral[500]};
+    display: flex;
+    font-size: .625rem;
+    font-weight: ${({theme}) => theme.font.weights[700]};
+    height: 30px;
+    justify-content: space-between;
+    padding: 0 .325rem;
+    text-transform: uppercase;
 
-  > svg {
-    transition: transform .4s;
-    transform: ${({open}) => open ? 'rotate(180deg)' : 'rotate(0deg)' };
+    > svg {
+      transition: transform .4s;
+      transform: ${({open}) => open ? 'rotate(180deg)' : 'rotate(0deg)' };
+    } 
+  }
+  
+  @media (min-width: 768px) {
+    font-size: .725rem;
+    height: 35px;
+    letter-spacing: 2px;
+    padding: 0 1rem;
   }
 `;
 
@@ -90,10 +116,17 @@ export const FilterOrderContainer = styled.ul`
 `;
 
 export const FilterOrderItem = styled.li`
-  cursor: pointer;
-  font-size: .8rem;
-  padding: .625rem 1rem;
-  position: relative;
+  @media (min-width: 375px) {
+    cursor: pointer;
+    font-size: .7rem;
+    padding: .5rem .325rem;
+    position: relative; 
+  }
+
+  @media (min-width: 768px) {
+    font-size: .8rem;
+    padding: .625rem 1rem;
+  }
 
   &:not(.active-filter):hover {
     background-color: #e7e7e775;

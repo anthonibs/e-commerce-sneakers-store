@@ -29,6 +29,8 @@ const Home = () => {
     loadProducts();
   }, [loadProducts]);
 
+
+  // Banner list array
   const images = [
     {
       image: 'assets/banners/runnig-shoes-new-release-brand.png',

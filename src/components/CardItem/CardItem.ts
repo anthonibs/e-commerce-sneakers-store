@@ -4,103 +4,155 @@ export const CardContainer = styled.article`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto 1fr;
-  width: 100%;
   height: 100%;
+  width: 100%;
+`;
 
-  figure {
+export const FigureContainer = styled.figure`
+  @media (min-width: 375px) {
+    height: 200px; 
     position: relative;
     width: 100%;
-    height: 260px;
+  }
+  
+  @media (min-width: 768px) {
+    height: 260px; 
+  }
+`;
 
-    div {
-      position: absolute;
-      right: 10px;
-      width: 50px;
-      height: 55px;
-      clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
-      background-color: ${({ theme }) => theme.colors.primary[100]};
-      pointer-events: none;  
-      
-      span {
-        display: block;
-        line-height: 45px;
-        font-size: .8rem;
-        font-weight: ${({ theme }) => theme.font.weights[700]};
-        text-align: center;
-      }
-    }
+export const ContainerPercentage =  styled.div`
+  @media (min-width: 375px) {
+    background-color: ${({ theme }) => theme.colors.primary[100]};
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+    height: 45px;
+    position: absolute;
+    pointer-events: none;  
+    right: 6px;
+    width: 40px;
+  } 
 
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-position: center;
-      object-fit: cover;
-    }
+  @media (min-width: 768px) {
+    height: 55px;
+    right: 10px;
+    width: 50px;
+  } 
+`;
+
+export const Percentage = styled.span`
+  @media (min-width: 375px) {
+    display: block;
+    font-size: .7rem;
+    font-weight: ${({ theme }) => theme.font.weights[700]};
+    line-height: 40px;
+    text-align: center; 
   }
 
-  header {
-    margin-top: .325rem;
+  @media (min-width: 768px) {
+    font-size: .8rem;
+    line-height: 45px;
+  }
+`;
+
+export const Image = styled.img`
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+`;
+
+export const HeaderContainer = styled.header`
+  height: fit-content;
+  margin-top: .325rem;
+  padding: 0 .625rem;
+`;
+
+export const HeaderTitle = styled.h2`
+  @media (min-width: 375px) {
+    color: ${({ theme }) => theme.colors.neutral[100]}; 
+    font-size: .9rem;
+    font-weight: ${({ theme }) => theme.font.weights[400]};
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1.125rem;
+  }
+`;
+
+export const ControlInfo = styled.section`
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: space-between;
+  position: relative;
+`;
+
+export const ControlStarRating = styled.span`
+  display: block;
+  padding: .325rem .625rem;
+`;
+
+export const FreeShipping = styled.p`
+  @media (min-width: 375px) {
+    color: #04BF45;
+    font-size: .8rem;
+    font-weight:  ${({ theme }) => theme.font.weights[700]}; 
     padding: 0 .625rem;
-    height: fit-content;
-    
-    h2 {
-      font-size: 1.125rem;
-      text-transform: uppercase;
-      font-weight: ${({ theme }) => theme.font.weights[400]};
-      color: ${({ theme }) => theme.colors.neutral[100]};
-    }
   }
 
-  section {
-    position: relative;
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+export const PriceOf = styled.span`
+  @media (min-width: 375px) {
+    color: ${({ theme }) => theme.colors.neutral[300]};
+    display: block;
+    font-size: .8rem;
+    font-weight:  ${({ theme }) => theme.font.weights[700]}; 
+    padding: .625rem .625rem .125rem;
+    text-decoration: line-through;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+export const CurrentPrice = styled.span`
+  @media (min-width: 375px) {
+    color: ${({ theme }) => theme.colors.neutral[600]};
+    display: block;
+    font-size: 1.25rem;
+    font-weight:  ${({ theme }) => theme.font.weights[700]}; 
+    letter-spacing: 2px;
+    padding: .325rem .625rem;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1.825rem; 
+  }
+`;
+
+export const ValueInstallments = styled.p`
+  @media (min-width: 375px) {
+    align-items: center;
+    background-color: ${({ theme }) => theme.colors.neutral[400]};
+    color: ${({ theme }) => theme.colors.neutral[200]};
     display: flex;
-    height: auto;
-    flex-direction: column;
-    justify-content: space-between;
+    font-size: .9rem; 
+    gap: .625rem;
+    line-height: 2rem;
+    padding: 0 .625rem;
+  }
 
-    .star-rating {
-      display: block;
-      padding: .325rem .625rem;
-    }
+  @media (min-width: 768px) {
+    font-size: 1.25rem; 
+  }
 
-    .free-shipping {
-      padding: 0 .625rem;
-      color: #04BF45;
-      font-weight:  ${({ theme }) => theme.font.weights[700]};
-    }
-
-    .priceOf {
-      display: block;
-      padding: .625rem .625rem .125rem;
-      font-size: 1rem;
-      text-decoration: line-through;
-      color: ${({ theme }) => theme.colors.neutral[300]};
-      font-weight:  ${({ theme }) => theme.font.weights[700]};
-    }
-
-    .current-price {
-      display: block;
-      padding: .325rem .625rem;
-      font-size: 1.825rem;
-      letter-spacing: 2px;
-      color: ${({ theme }) => theme.colors.neutral[600]};
-      font-weight:  ${({ theme }) => theme.font.weights[700]};
-    }
-
-    .value-installments {
-      padding: 0 .625rem;
-      line-height: 2rem;
-      display: flex;
-      align-items: center;
-      background-color: ${({ theme }) => theme.colors.neutral[400]};
-      gap: .625rem;
-      color: ${({ theme }) => theme.colors.neutral[200]};
-      font-size: 1.25rem;
-
-      svg {
-        fill: ${({ theme }) => theme.colors.primary[100]};
-      }
-    }
+  svg {
+    fill: ${({ theme }) => theme.colors.primary[100]};
   }
 `;

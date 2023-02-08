@@ -25,10 +25,17 @@ const hiddenFilterOrder = keyframes`
 `;
 
 export const Container = styled.fieldset`
-  height: 35px;
-  position: relative;
-  width: 180px;
-  z-index: 100;
+  @media (min-width: 375px) {
+    height: 30px;
+    position: relative;
+    width: 120px;
+    z-index: 100; 
+  }
+
+  @media (min-width: 768px) {
+    height: 35px;
+    width: 180px;
+  }
 `;
 
 export const ButtonFilter = styled.button`
@@ -42,22 +49,28 @@ interface ITitleFilter {
 }
 
 export const TitleFilter = styled.span<ITitleFilter>`
-  align-items: center;
-  border-radius: .325rem;
-  background-color: ${({ theme }) => theme.colors.primary[100]};
-  cursor: pointer;
-  color:  ${({theme}) => theme.colors.neutral[500]};
-  display: flex;
-  font-size: .725rem;
-  font-weight: ${({ theme }) => theme.font.weights[700]};
-  font-family: ${({ theme }) => theme.font.family};
-  height: 100%;
-  justify-content: space-between;
-  letter-spacing: 1px;
-  overflow: hidden;
-  padding: .625rem .825rem;
-  text-transform: uppercase;
-  width: 100%;
+  @media (min-width: 375px) {
+    align-items: center;
+    border-radius: .325rem;
+    background-color: ${({ theme }) => theme.colors.primary[100]};
+    cursor: pointer;
+    color:  ${({theme}) => theme.colors.neutral[500]};
+    display: flex;
+    font-size: .625rem;
+    font-weight: ${({ theme }) => theme.font.weights[700]};
+    font-family: ${({ theme }) => theme.font.family};
+    height: 100%;
+    justify-content: space-between;
+    letter-spacing: 1px;
+    overflow: hidden;
+    padding: .625rem .825rem;
+    text-transform: uppercase;
+    width: 100%; 
+  }
+
+  @media (min-width: 768px) {
+    font-size: .725rem; 
+  }
 
   > svg {
     transition: transform .4s;
@@ -98,9 +111,16 @@ export const ListOrderContainer = styled.ul`
 `;
 
 export const ListOrderItem = styled.li`
-  cursor: pointer;
-  font-size: .9rem;
-  padding: .625rem 1rem;
+  @media (min-width: 375px) {
+    cursor: pointer;
+    font-size: .7rem;
+    padding: .5rem .625rem; 
+  }
+
+  @media (min-width: 768px) {
+    font-size: .9rem;
+    padding: .625rem 1rem; 
+  }
 
   &:not(.active-filter):hover {
     background-color: #e7e7e775;

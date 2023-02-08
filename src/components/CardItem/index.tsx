@@ -2,11 +2,11 @@ import { memo } from 'react';
 
 import { IProduct } from 'shared/interfaces/ProductsInterfaces';
 
-import { CardContainer } from './CardItem';
+import { CardContainer, ContainerPercentage, ControlInfo, ControlStarRating, CurrentPrice, FigureContainer, FreeShipping, HeaderContainer, HeaderTitle, Image, Percentage, PriceOf, ValueInstallments } from './CardItem';
 import StarRating from 'components/StarRating';
 
-import priceFormatted from 'utils/priceFormatted';
-import percentageFormatted from 'utils/percentageFormatted';
+import priceFormatted from 'shared/utils/priceFormatted';
+import percentageFormatted from 'shared/utils/percentageFormatted';
 
 import { BsCreditCard } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
@@ -28,45 +28,54 @@ const CardItem = ({
 
   return (
     <CardContainer tabIndex={0} data-card={'Cartão de produtos'}>
-      <figure>
+      <FigureContainer>
         {discountPercentage !== null
           &&
-          <div>
-            <span> -{percentageFormatted(discountPercentage)}</span>
-          </div>
+          <ContainerPercentage>
+            <Percentage> 
+              -{percentageFormatted(discountPercentage)}
+            </Percentage>
+          </ContainerPercentage>
         }
-        <Link to={`men/${Number(id)}`}>
-          <img src={`/assets/products-shoes/${thumbnail}.webp`} alt={title} />
+        <Link to={`/men/${Number(id)}`}>
+          <Image
+            src={`/assets/products-shoes/${thumbnail}.webp`}
+            alt={title}
+          />
         </Link>
-      </figure>
+      </FigureContainer>
 
-      <header>
-        <h2>{title}</h2>
-      </header>
+      <HeaderContainer>
+        <HeaderTitle>
+          {title}
+        </HeaderTitle>
+      </HeaderContainer>
 
-      <section>
-        <span className='star-rating'>
+      <ControlInfo>
+        <ControlStarRating>
           <StarRating rating={rating} />
-        </span>
+        </ControlStarRating>
 
-        <p className='free-shipping'>Free Shipping</p>
+        <FreeShipping>
+          Free Shipping
+        </FreeShipping>
 
         {discountPercentage !== null
           &&
-          <span className='priceOf'>
+          <PriceOf className='priceOf'>
             of {priceFormatted(price)}
-          </span>
+          </PriceOf>
         }
 
-        <span className='current-price'>
+        <CurrentPrice className='current-price'>
           {priceFormatted(priceAfterDiscount)}
-        </span>
+        </CurrentPrice>
 
-        <p className='value-installments'>
+        <ValueInstallments>
           <BsCreditCard />
           or until 10x of {priceFormatted(priceAfterDiscount / numberOfInstallments)}
-        </p>
-      </section>
+        </ValueInstallments>
+      </ControlInfo>
     </CardContainer >
   );
 };
