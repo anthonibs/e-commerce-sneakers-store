@@ -31,6 +31,7 @@ import { HiMinus, HiPlus } from 'react-icons/hi';
 
 import SliderProduct from 'components/SliderProduct';
 import IconCart from 'components/svgs/IconCart';
+import NotFound from 'pages/NotFound';
 
 
 type IParams = {
@@ -41,6 +42,7 @@ const ProductItem = () => {
 
   // States
   const [product, setProduct] = useState<IProduct>({} as IProduct);
+  const [productNoExist, setProductNoExist] = useState<boolean>(false);
 
   // Hooks
   const { orderID } = useParams() as IParams;
@@ -52,12 +54,24 @@ const ProductItem = () => {
   const loadProduct = useCallback(async () => {
     try {
       const productItem = await ProductService.listProduct(orderID);
-      setProduct({ ...productItem[0] });
+      console.log(productItem);
+
+      if (productItem.length > 0) {
+        setProduct({ ...productItem[0] });
+      }
+
+      if (productItem.length === 0) {
+        return setProductNoExist(true);
+      }
 
     } catch (error) {
       console.log(error);
     }
   }, [orderID]);
+
+  
+
+  console.log(product);
 
   const {
     title,
@@ -73,6 +87,10 @@ const ProductItem = () => {
   useEffect(() => {
     loadProduct();
   }, [loadProduct]);
+
+  if (productNoExist) {
+    return <NotFound />;
+  }
 
   function handleAddCart() {
     navigate('/cart');
