@@ -82,6 +82,9 @@ export const useCartContext = () => {
     setListCart((prevState: IProduct[]) => prevState.filter((item: IProduct) => item.id !== id));
   }
 
+  function handlerRemoveAll() {
+    setListCart([]);
+  }
 
   useEffect(() => {
     const totalCart = listCart.reduce((accumulator: IQuantity, product: IProduct) => {
@@ -104,7 +107,8 @@ export const useCartContext = () => {
     handleMinusCart,
     handlePlusCart,
     quantity,
-    handlerRemoveProductCart
+    handlerRemoveProductCart,
+    handlerRemoveAll
   };
 
 };
