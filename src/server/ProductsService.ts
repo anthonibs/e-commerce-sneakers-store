@@ -5,13 +5,13 @@ class ProductsService {
   httpClients: HttpsServer;
 
   constructor() {
-    // Fake API hosting to display all products on screen, using mocki.
-    this.httpClients = new HttpsServer('https://mocki.io/v1/');
+    // Fake API hosting to display all products on screen, using mockapi.
+    this.httpClients = new HttpsServer('https://63e41512c04baebbcda08a27.mockapi.io/api/v1');
   }
 
   async listProducts(): Promise<IProduct[]> {
     // Passing as a parameter the URL that the API creates.
-    return this.httpClients.get('fcd30a27-7805-4948-898c-6b8068e61ab5');
+    return this.httpClients.get('/products');
   }
 }
 

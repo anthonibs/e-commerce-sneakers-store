@@ -29,7 +29,7 @@ import {
 const Cart = () => {
 
   const { listCart, handleMinusCart, handlePlusCart, handlerRemoveProductCart, quantity, handlerRemoveAll } = useCartContext();
-  const productAddToCart = (id: number) => listCart.find((product: IProduct) => product.id === id);
+  const productAddToCart = (id: string) => listCart.find((product: IProduct) => product.id === id);
 
   return (
     <Container>

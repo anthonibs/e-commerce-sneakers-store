@@ -44,7 +44,7 @@ export const useCartContext = () => {
   const { listCart, setListCart, quantity, setQuantity } = useContext<any>(CartContext);
 
 
-  function changeQuantity(id: number, quantity: number) {
+  function changeQuantity(id: string, quantity: number) {
     return listCart.map((product: IProduct) => {
       if (product.id === id) product.quantity += quantity;
       return product;
@@ -52,7 +52,7 @@ export const useCartContext = () => {
   }
 
 
-  function handleMinusCart(id: number) {
+  function handleMinusCart(id: string) {
     const existProduct = listCart.find((product: IProduct) => product.id === id);
     const lastItem = existProduct?.quantity === 1;
 
@@ -78,7 +78,7 @@ export const useCartContext = () => {
     setListCart(changeQuantity(newProduct.id, 1));
   }
 
-  function handlerRemoveProductCart(id: number) {
+  function handlerRemoveProductCart(id: string) {
     setListCart((prevState: IProduct[]) => prevState.filter((item: IProduct) => item.id !== id));
   }
 
@@ -90,7 +90,7 @@ export const useCartContext = () => {
     const totalCart = listCart.reduce((accumulator: IQuantity, product: IProduct) => {
       return {
         totalQuantity: accumulator.totalQuantity + product.quantity,
-        totalValue: accumulator.totalValue + (product.price * product.quantity)
+        totalValue: accumulator.totalValue + (product.priceCurrent * product.quantity)
       };
     }, {
       totalQuantity: 0,

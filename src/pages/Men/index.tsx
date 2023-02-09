@@ -18,6 +18,7 @@ import Filter from 'components/Filter';
 import ProductsService from 'server/ProductsService';
 import { IProduct } from 'shared/interfaces/ProductsInterfaces';
 import AsideFilter from 'components/AsideFilter';
+import Spinner from 'components/Spinner';
 
 const orderItems = ['Relevance', 'Biggest price', 'Lowest price'];
 
@@ -25,6 +26,7 @@ const Men = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [selectedBrand, setSelectedBrand] = useState<string>('');
   const [sortFilter, setSortFilter] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
 
 
   // Example of filter
@@ -35,8 +37,11 @@ const Men = () => {
     try {
       const response = await ProductsService.listProducts();
       setProducts(response);
+      setLoading(true);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -70,58 +75,64 @@ const Men = () => {
 
   return (
     <>
-      <BannerMain
-        height='260px'
-        width='100%'
-        objectFit='cover'
-        url='assets/banners/sneakers-and-essential.png'
-        title='Mens shoes'
-      />
-
-      <Container>
-        <HeaderFilter>
-          <ShowingResults>
-          Showing: <strong>{newProductList.length}</strong> results
-          </ShowingResults>
-
-          <ControlFilter>
-            <LabelFilter>
-            Order by
-            </LabelFilter>
-
-            <Filter
-              filterDefault="Filter by order"
-              options={orderItems}
-              selected={sortFilter}
-              setSelected={setSortFilter}
-            />
-          </ControlFilter>
-        </HeaderFilter>
-        
-        <AsideContainerFilter>
-          <AsideFilter
-            title='Brands'
-            options={brandsShoes}
-            selected={selectedBrand}
-            setSelected={setSelectedBrand}
+      {loading && <Spinner />}
+      {!loading &&
+        <>
+          <BannerMain
+            height='260px'
+            width='100%'
+            objectFit='cover'
+            url='assets/banners/sneakers-and-essential.png'
+            title='Mens shoes'
           />
-          <AsideFilter
-            title='Example'
-            options={exampleTeste}
-            selected={example}
-            setSelected={setExample}
-          />
-        </AsideContainerFilter>
 
-        <ListContainer>
-          {newProductList.map((product: IProduct) => (
-            <ListItem key={product.id}>
-              <CardItem key={product.id} {...product} />
-            </ListItem>
-          ))}
-        </ListContainer>
-      </Container>
+          <Container>
+            <HeaderFilter>
+              <ShowingResults>
+                Showing: <strong>{newProductList.length}</strong> results
+              </ShowingResults>
+
+              <ControlFilter>
+                <LabelFilter>
+                  Order by
+                </LabelFilter>
+
+                <Filter
+                  filterDefault="Filter by order"
+                  options={orderItems}
+                  selected={sortFilter}
+                  setSelected={setSortFilter}
+                />
+              </ControlFilter>
+            </HeaderFilter>
+
+            <AsideContainerFilter>
+              <AsideFilter
+                title='Brands'
+                options={brandsShoes}
+                selected={selectedBrand}
+                setSelected={setSelectedBrand}
+              />
+              <AsideFilter
+                title='Example'
+                options={exampleTeste}
+                selected={example}
+                setSelected={setExample}
+              />
+            </AsideContainerFilter>
+
+            <ListContainer>
+              {newProductList.map((product: IProduct) => (
+                <ListItem key={product.id}>
+                  <CardItem key={product.id} {...product} />
+                </ListItem>
+              ))}
+            </ListContainer>
+          </Container>
+        </>
+      }
     </>
+
   );
 };
 

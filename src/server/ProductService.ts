@@ -7,7 +7,7 @@ class ProductService {
 
   constructor() {
     // As api mocki is a paid platform and creates fake API with paying endpoints, I decided to use json-sever to create api locally to make the individual request.
-    this.httpClients = new HttpsServer('http://localhost:5500');
+    this.httpClients = new HttpsServer('https://63e41512c04baebbcda08a27.mockapi.io/api/v1');
   }
 
   async listProduct(params: string): Promise<IProduct[]> {

@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.section`
   @media (min-width: 375px) {
     height: 100%;
-    padding-bottom: 4rem; 
+    padding-bottom: 4rem;
+    position: relative;
     width: 100%;
   }
 

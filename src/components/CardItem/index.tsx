@@ -37,7 +37,7 @@ const CardItem = ({
             </Percentage>
           </ContainerPercentage>
         }
-        <Link to={`/men/${Number(id)}`}>
+        <Link to={`/men/${(id)}`}>
           <Image
             src={`/assets/products-shoes/${thumbnail}.webp`}
             alt={title}

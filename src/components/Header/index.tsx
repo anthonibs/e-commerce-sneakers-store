@@ -35,7 +35,6 @@ const Header = () => {
   const [onCartHover, setOnCartHover] = useState<boolean>(false);
 
   function handlerNavigateToCart() {
-    console.log(navigate);
     navigate('/cart');
   }
 

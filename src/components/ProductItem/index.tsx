@@ -32,6 +32,7 @@ import { HiMinus, HiPlus } from 'react-icons/hi';
 import SliderProduct from 'components/SliderProduct';
 import IconCart from 'components/svgs/IconCart';
 import NotFound from 'pages/NotFound';
+import Spinner from 'components/Spinner';
 
 
 type IParams = {
@@ -43,6 +44,7 @@ const ProductItem = () => {
   // States
   const [product, setProduct] = useState<IProduct>({} as IProduct);
   const [productNoExist, setProductNoExist] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   // Hooks
   const { orderID } = useParams() as IParams;
@@ -54,25 +56,25 @@ const ProductItem = () => {
   const loadProduct = useCallback(async () => {
     try {
       const productItem = await ProductService.listProduct(orderID);
-      console.log(productItem);
 
       if (productItem.length > 0) {
         setProduct({ ...productItem[0] });
       }
-
+      
       if (productItem.length === 0) {
         return setProductNoExist(true);
       }
-
+      
+      setLoading(true);
+      
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }, [orderID]);
 
   
-
-  console.log(product);
-
   const {
     title,
     id,
@@ -103,79 +105,83 @@ const ProductItem = () => {
 
   return (
     <Container>
-      <Article>
-        <SliderProduct
-          thumbnail={thumbnail}
-          slider={images}
-          title={title}
-        />
+      {loading && <Spinner/>}
+      {
+        !loading 
+        && <Article>
+          <SliderProduct
+            thumbnail={thumbnail}
+            slider={images}
+            title={title}
+          />
 
-        <ContainerInfo>
-          <TitleContainer>
-            <Company>sneaker company</Company>
-            <ProductName>{title}</ProductName>
-          </TitleContainer>
+          <ContainerInfo>
+            <TitleContainer>
+              <Company>sneaker company</Company>
+              <ProductName>{title}</ProductName>
+            </TitleContainer>
 
-          <DescriptionWrap>
-            <TextDescription>
-              {description}
-            </TextDescription>
+            <DescriptionWrap>
+              <TextDescription>
+                {description}
+              </TextDescription>
 
-            <PriceWrap>
-              <div>
-                <CurrentPrice>
-                  {priceFormatted(price * (1 - (discountPercentage === null ? 0 : discountPercentage / 100)))}
-                </CurrentPrice>
+              <PriceWrap>
+                <div>
+                  <CurrentPrice>
+                    {priceFormatted(price * (1 - (discountPercentage === null ? 0 : discountPercentage / 100)))}
+                  </CurrentPrice>
 
-                {discountPercentage !== null
+                  {discountPercentage !== null
                   &&
                   <ProductDiscount>
                     {discountPercentage}%
                   </ProductDiscount>
-                }
-              </div>
+                  }
+                </div>
 
-              <div>
-                {discountPercentage !== null
+                <div>
+                  {discountPercentage !== null
                   &&
                   <PreviousPrice>
                     {priceFormatted(price)}
                   </PreviousPrice>
-                }</div>
-            </PriceWrap>
+                  }</div>
+              </PriceWrap>
 
-          </DescriptionWrap>
+            </DescriptionWrap>
 
-          <WrapperButton>
-            <ControlButtonCart>
-              <ButtonCart
-                onClick={() => handleMinusCart(id)}
-                disabled={quantityLessThanZero}
+            <WrapperButton>
+              <ControlButtonCart>
+                <ButtonCart
+                  onClick={() => handleMinusCart(id)}
+                  disabled={quantityLessThanZero}
+                >
+                  <HiMinus />
+                </ButtonCart>
+
+                <QuantityProduct>
+                  {productAddToCart?.quantity || 0}
+                </QuantityProduct>
+
+                <ButtonCart
+                  onClick={() => handlePlusCart(product)}
+                  disabled={quantityGreaterThanStock}
+                >
+                  <HiPlus />
+                </ButtonCart>
+              </ControlButtonCart>
+
+              <AddProductCart
+                onClick={handleAddCart}
               >
-                <HiMinus />
-              </ButtonCart>
-
-              <QuantityProduct>
-                {productAddToCart?.quantity || 0}
-              </QuantityProduct>
-
-              <ButtonCart
-                onClick={() => handlePlusCart(product)}
-                disabled={quantityGreaterThanStock}
-              >
-                <HiPlus />
-              </ButtonCart>
-            </ControlButtonCart>
-
-            <AddProductCart
-              onClick={handleAddCart}
-            >
-              <IconCart />
+                <IconCart />
               Add to cart
-            </AddProductCart>
-          </WrapperButton>
-        </ContainerInfo>
-      </Article>
+              </AddProductCart>
+            </WrapperButton>
+          </ContainerInfo>
+        </Article>
+      }
     </Container >
   );
 };
