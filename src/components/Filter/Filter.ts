@@ -28,7 +28,7 @@ export const Container = styled.fieldset`
   @media (min-width: 375px) {
     height: 30px;
     position: relative;
-    width: 120px;
+    width: fit-content;
     z-index: 100; 
   }
 

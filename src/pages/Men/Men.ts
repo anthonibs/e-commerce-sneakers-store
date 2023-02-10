@@ -4,46 +4,81 @@ export const Container = styled.section`
   @media (min-width: 375px) {
     display: grid;
     column-gap: 1rem;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas: 
-      'header header'
-      'aside product'
+      'header'
+      'product'
     ;
     margin: 1rem auto 4rem; 
     width: 96%;
   }
 
-  @media (min-width: 768px) {
-    column-gap: 2rem;
+  @media (min-width: 1000px) {
+    column-gap: 3rem;
     grid-template-columns: 200px 1fr;
+    grid-template-rows: 1fr;
     grid-template-areas: 
       'aside header'
       'aside product'
     ;
-    margin: 1rem 0 6rem;
+    height: 100%;
+    margin: 2rem 0 6rem;
     width: 100%;
-  }
-
-  @media (min-width: 1000px) {
-    column-gap: 3rem;
   }
 `;
 
-export const HeaderFilter = styled.div`
-  align-items: center;
+export const SectionProducts = styled.section`
+`;
+
+
+export const AsideContainerFilter = styled.aside`
+  border-radius: .125rem;
+  background-color: ${({ theme }) => theme.colors.neutral[400]};
   display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  grid-area: aside;
+  height: fit-content;
+  padding: .625rem;
+  width: 100%;
+`;
+
+export const Header = styled.header`
+  display: flex;
+  flex-direction: column;
   grid-area: header;
-  justify-content: space-between;
   margin-bottom: .625rem;
   width: 100%;
 `;
 
+export const PageSummary = styled.div`
+  margin-bottom: 1.6rem;
+
+  > h2 {
+    color: ${({theme}) => theme.colors.neutral[600]};
+    font-size: 1.625rem;
+  }
+  
+  > p {
+    color: ${({theme}) => theme.colors.neutral[600]};
+    font-size: .925rem;
+    line-height: 1.2;
+    margin-top: .625rem;
+  }
+`;
+
+export const ContainerFilter = styled.div`
+  align-items: center;
+  display: flex;
+`;
+
 export const ShowingResults = styled.p`
   @media (min-width: 375px) {
-    color: ${({theme}) => theme.colors.neutral[600]};
+    color: ${({ theme }) => theme.colors.neutral[600]};
     font-size: .725rem;
-    width: 50%; 
+    white-space: nowrap;
+    width: fit-content; 
   }
   
   @media (min-width: 768px) {
@@ -61,15 +96,16 @@ export const ControlFilter = styled.div`
   }
 
   @media (min-width: 768px){
-    gap: 1rem;
+    gap: .5rem;
   }
 `;
 
 export const LabelFilter = styled.span`
   @media (min-width: 375px) {
-    color: ${({theme}) => theme.colors.neutral[600]};
+    color: ${({ theme }) => theme.colors.neutral[600]};
     display: block;
     font-size: .725rem;
+    white-space: nowrap;
     width: fit-content;
   }
 
@@ -78,31 +114,19 @@ export const LabelFilter = styled.span`
   }
 `;
 
-export const AsideContainerFilter = styled.aside`
-  border-radius: .125rem;
-  background-color: ${({theme}) => theme.colors.neutral[400]};
-  display: flex;
-  flex-direction: column;
-  gap: .8rem;
-  grid-area: aside;
-  height: fit-content;
-  padding: .625rem;
-  width: 100%;
-`;
-
 export const ListContainer = styled.ul`
   @media (min-width: 375px) {
     display: grid;
     gap: 2rem .825rem;
     grid-area: product;
-    grid-template-columns:  repeat(auto-fill, minmax(200px, 1fr));
-    height: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(calc(375px / 2), 1fr));
+    height: fit-content;
     width: 100%; 
   }
 
   @media (min-width: 768px) {
     gap: 4rem 1.325rem;
-    grid-template-columns:  repeat(auto-fill, minmax(270px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300, 1fr));
   }
 `;
 

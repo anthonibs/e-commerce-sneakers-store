@@ -3,11 +3,14 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   AsideContainerFilter,
   Container,
+  ContainerFilter,
   ControlFilter,
-  HeaderFilter,
+  Header,
   LabelFilter,
   ListContainer,
   ListItem,
+  PageSummary,
+  SectionProducts,
   ShowingResults
 } from './Men';
 
@@ -19,6 +22,7 @@ import ProductsService from 'server/ProductsService';
 import { IProduct } from 'shared/interfaces/ProductsInterfaces';
 import AsideFilter from 'components/AsideFilter';
 import Spinner from 'components/Spinner';
+
 
 const orderItems = ['Relevance', 'Biggest price', 'Lowest price'];
 
@@ -68,6 +72,7 @@ const Men = () => {
   const newProductList = handleFilterOrder(filterByBrand);
   const brandsShoes = [...new Set(products.map(item => item.brand))];
 
+  const innerWidth = window.innerWidth;
 
   useEffect(() => {
     loaderProducts();
@@ -87,47 +92,65 @@ const Men = () => {
           />
 
           <Container>
-            <HeaderFilter>
-              <ShowingResults>
-                Showing: <strong>{newProductList.length}</strong> results
-              </ShowingResults>
-
-              <ControlFilter>
-                <LabelFilter>
-                  Order by
-                </LabelFilter>
-
-                <Filter
-                  filterDefault="Filter by order"
-                  options={orderItems}
-                  selected={sortFilter}
-                  setSelected={setSortFilter}
+            {innerWidth > 1000
+              && <AsideContainerFilter>
+                <AsideFilter
+                  title='Brands'
+                  options={brandsShoes}
+                  selected={selectedBrand}
+                  setSelected={setSelectedBrand}
                 />
-              </ControlFilter>
-            </HeaderFilter>
+                <AsideFilter
+                  title='Example'
+                  options={exampleTeste}
+                  selected={example}
+                  setSelected={setExample}
+                />
+              </AsideContainerFilter>}
 
-            <AsideContainerFilter>
-              <AsideFilter
-                title='Brands'
-                options={brandsShoes}
-                selected={selectedBrand}
-                setSelected={setSelectedBrand}
-              />
-              <AsideFilter
-                title='Example'
-                options={exampleTeste}
-                selected={example}
-                setSelected={setExample}
-              />
-            </AsideContainerFilter>
+            <SectionProducts>
+              <Header>
+                <PageSummary>
+                  <h2>
+                    MEN&apos;S TENNIS
+                  </h2>
+                  <p>
+                    Sneakers bets on current collections, always keeping an eye on the market, bringing technologies that offer comfort and safety when walking. And to provide the best for your feet, you will find models with extra soft finishes, lightness, flexibility, stability when walking and smart measurements. Every detail thought to offer shoes with the quality you deserve.
+                  </p>
 
-            <ListContainer>
-              {newProductList.map((product: IProduct) => (
-                <ListItem key={product.id}>
-                  <CardItem key={product.id} {...product} />
-                </ListItem>
-              ))}
-            </ListContainer>
+                  <p>
+                    Now you can be represented with models for all occasions: day to day, walking, work, school, gym, performance or running.
+                  </p>
+                </PageSummary>
+
+                <ContainerFilter>
+                  <ShowingResults>
+                    Showing: <strong>{newProductList.length}</strong> results
+                  </ShowingResults>
+
+                  <ControlFilter>
+                    <LabelFilter>
+                      Order by
+                    </LabelFilter>
+
+                    <Filter
+                      filterDefault="Filter by order"
+                      options={orderItems}
+                      selected={sortFilter}
+                      setSelected={setSortFilter}
+                    />
+                  </ControlFilter>
+                </ContainerFilter>
+              </Header>
+
+              <ListContainer>
+                {newProductList.map((product: IProduct) => (
+                  <ListItem key={product.id}>
+                    <CardItem key={product.id} {...product}/>
+                  </ListItem>
+                ))}
+              </ListContainer>
+            </SectionProducts>
           </Container>
         </>
       }
