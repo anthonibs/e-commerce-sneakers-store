@@ -3,24 +3,77 @@ import styled from 'styled-components';
 export const CardContainer = styled.article`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: 200px auto 1fr;
+  grid-template-areas: 
+    'image'
+    'header'
+    'info'
+  ;
   height: 100%;
   width: 100%;
+
+  @media (min-width: 375px) {    
+    &.default {
+      grid-template-rows: auto auto 1fr;
+      grid-template-columns: 160px 1fr;
+      grid-template-areas: 
+      'image header'
+      'image info'
+      'image info';
+    } 
+   
+    &.fullsize-image {
+      grid-template-rows: 260px auto 1fr;
+    }
+
+    &.double-columns {
+      grid-template-rows: 180px auto 1fr;
+    }
+  }
+
+  @media (min-width: 768px) {
+    grid-template-rows: 240px auto 1fr;
+
+    &.default {
+      height: 220px;
+      grid-template-rows: auto auto 1fr;
+      grid-template-columns: 240px 1fr;
+    } 
+
+    &.fullsize-image {
+      grid-template-rows: 280px auto auto;
+    }
+
+     &.double-columns {
+      grid-template-rows: 240px auto 1fr;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    grid-template-rows: 260px auto 1fr;
+
+    &.default, &.fullsize-image, &.double-columns  {
+      grid-template-columns: 1fr;
+      grid-template-rows: 260px 45px 1fr;
+      grid-template-areas: 
+      'image'
+      'header'
+      'info';
+      height: 100%;
+    } 
+  }
 `;
 
 export const FigureContainer = styled.figure`
   @media (min-width: 375px) {
-    height: 200px; 
+    grid-area: image;
+    height: 100%; 
     position: relative;
     width: 100%;
   }
-  
-  @media (min-width: 768px) {
-    height: 260px; 
-  }
 `;
 
-export const ContainerPercentage =  styled.div`
+export const ContainerPercentage = styled.div`
   @media (min-width: 375px) {
     background-color: ${({ theme }) => theme.colors.primary[100]};
     clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
@@ -72,6 +125,7 @@ export const HeaderTitle = styled.h2`
     color: ${({ theme }) => theme.colors.neutral[100]}; 
     font-size: .9rem;
     font-weight: ${({ theme }) => theme.font.weights[400]};
+    grid-area: header;
     text-transform: uppercase;
   }
 
@@ -83,6 +137,7 @@ export const HeaderTitle = styled.h2`
 export const ControlInfo = styled.section`
   display: flex;
   flex-direction: column;
+  grid-area: info;
   height: auto;
   justify-content: space-between;
   position: relative;

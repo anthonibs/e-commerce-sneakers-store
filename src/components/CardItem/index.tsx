@@ -2,7 +2,22 @@ import { memo } from 'react';
 
 import { IProduct } from 'shared/interfaces/ProductsInterfaces';
 
-import { CardContainer, ContainerPercentage, ControlInfo, ControlStarRating, CurrentPrice, FigureContainer, FreeShipping, HeaderContainer, HeaderTitle, Image, Percentage, PriceOf, ValueInstallments } from './CardItem';
+import {
+  CardContainer,
+  ContainerPercentage,
+  ControlInfo,
+  ControlStarRating,
+  CurrentPrice,
+  FigureContainer,
+  FreeShipping,
+  HeaderContainer,
+  HeaderTitle,
+  Image,
+  Percentage,
+  PriceOf,
+  ValueInstallments
+} from './CardItem';
+
 import StarRating from 'components/StarRating';
 
 import priceFormatted from 'shared/utils/priceFormatted';
@@ -11,15 +26,18 @@ import percentageFormatted from 'shared/utils/percentageFormatted';
 import { BsCreditCard } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
+interface IProps {
+  product: IProduct;
+  gridColumn?: string;
+}
 
 const CardItem = ({
-  title,
-  price,
-  id,
-  thumbnail,
-  discountPercentage,
-  rating
-}: IProduct) => {
+  gridColumn,
+  product
+}: IProps) => {
+
+
+  const { discountPercentage, id, price, thumbnail, title, rating } = product;
 
   const numberOfInstallments = 10;
   const isNullPercentage = discountPercentage === null ? 0 : discountPercentage;
@@ -27,12 +45,16 @@ const CardItem = ({
 
 
   return (
-    <CardContainer tabIndex={0} data-card={'Cartão de produtos'}>
+    <CardContainer
+      tabIndex={0}
+      className={gridColumn}
+      data-card={'Cartão de produtos'}
+    >
       <FigureContainer>
         {discountPercentage !== null
           &&
           <ContainerPercentage>
-            <Percentage> 
+            <Percentage>
               -{percentageFormatted(discountPercentage)}
             </Percentage>
           </ContainerPercentage>

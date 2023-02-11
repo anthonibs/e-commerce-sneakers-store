@@ -26,15 +26,11 @@ const hiddenFilterOrder = keyframes`
 
 export const Container = styled.fieldset`
   @media (min-width: 375px) {
-    height: 30px;
-    position: relative;
-    width: fit-content;
-    z-index: 100; 
-  }
-
-  @media (min-width: 768px) {
     height: 35px;
-    width: 180px;
+    position: relative;
+    width: 170px;
+    white-space: nowrap;
+    z-index: 100; 
   }
 `;
 

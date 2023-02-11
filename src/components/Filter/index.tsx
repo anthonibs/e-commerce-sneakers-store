@@ -24,6 +24,7 @@ const Filter = ({ selected, setSelected, options, filterDefault }: IFilter) => {
   function handlerExitFilterField() {
     setOpen(false);
   }
+  
 
   return (
     <Container>

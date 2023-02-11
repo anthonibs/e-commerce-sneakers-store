@@ -57,7 +57,7 @@ const Home = () => {
 
   return (
     <Container>
-      {loading && <Spinner/>}
+      {loading && <Spinner />}
       {!loading
         &&
         <>
@@ -109,10 +109,13 @@ const Home = () => {
           <ListContainer>
             {products.map((product: IProduct) => (
               <ListItem key={product.id}>
-                <CardItem key={product.id} {...product} />
+                <CardItem
+                  key={product.id}
+                  product={product}
+                />
               </ListItem>
             ))}
-          </ListContainer>        
+          </ListContainer>
         </>
       }
     </Container >

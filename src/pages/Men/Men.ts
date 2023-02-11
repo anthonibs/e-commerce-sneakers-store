@@ -56,12 +56,12 @@ export const PageSummary = styled.div`
   margin-bottom: 1.6rem;
 
   > h2 {
-    color: ${({theme}) => theme.colors.neutral[600]};
+    color: ${({ theme }) => theme.colors.neutral[600]};
     font-size: 1.625rem;
   }
   
   > p {
-    color: ${({theme}) => theme.colors.neutral[600]};
+    color: ${({ theme }) => theme.colors.neutral[600]};
     font-size: .925rem;
     line-height: 1.2;
     margin-top: .625rem;
@@ -96,7 +96,7 @@ export const ControlFilter = styled.div`
   }
 
   @media (min-width: 768px){
-    gap: .5rem;
+    gap: .6rem;
   }
 `;
 
@@ -114,19 +114,64 @@ export const LabelFilter = styled.span`
   }
 `;
 
+export const ButtonModalFilter = styled.button`
+  align-items: center;
+  border-radius: .325rem;
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.neutral[200]};
+  cursor: pointer;
+  display: flex;
+  font-size: .825rem;
+  gap: .25rem;
+  line-height: 20px;
+  padding: .325rem;
+  transition: all .2s ease-out;
+
+
+  & > svg {
+    fill: ${({ theme }) => theme.colors.neutral[200]};
+    pointer-events: none;
+  }
+
+  &:hover > svg, &:hover {
+    color: ${({ theme }) => theme.colors.neutral[300]};    
+    fill: ${({ theme }) => theme.colors.neutral[300]};
+    transition: all .2s ease;
+  }
+`;
+
 export const ListContainer = styled.ul`
   @media (min-width: 375px) {
     display: grid;
-    gap: 2rem .825rem;
-    grid-area: product;
-    grid-template-columns: repeat(auto-fill, minmax(calc(375px / 2), 1fr));
     height: fit-content;
-    width: 100%; 
+    grid-area: product;
+    gap: 2rem .825rem;
+    width: 100%;
+
+    &.default {
+      grid-template-columns: 1fr;
+    }
+
+    &.double-columns {
+      grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+    }
+
+    &.fullsize-image {
+      grid-template-columns: 1fr;
+    }
   }
 
-  @media (min-width: 768px) {
-    gap: 4rem 1.325rem;
-    grid-template-columns: repeat(auto-fill, minmax(300, 1fr));
+  @media (min-width: 700px) { 
+    &.double-columns {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+  }
+
+  @media (min-width: 1000px) { 
+    &.default, &.double-columns, &.fullsize-image {
+      gap: 3rem 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
   }
 `;
 
