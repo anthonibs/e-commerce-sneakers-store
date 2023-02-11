@@ -1,85 +1,54 @@
 import styled, { keyframes } from 'styled-components';
 
-const hiddenFilterOrder = keyframes`
-  from {
-    top: 0;
-    opacity: 100%;
-  }
-
-  to {
-    display: none;
-    visibility: hidden;
-    top: -4px;
-    opacity: 80%;
-  }
-`;
-
 const fade = keyframes`
- from {
-    top: -4px;
-    opacity: 80%;
+  from {
+    opacity: 20%;
   }
+  
   to {
     opacity: 100%;
   }
 `;
-
 
 export const Container = styled.div`
   background-color: ${({theme}) => theme.colors.neutral[400]};
   height: fit-content;
   position: relative;
- 
-  @media (min-width: 375px) {
-      & + &::before {
-      content: '';
-      position: absolute;
-      width: 48%;
-      height: 3px;
-      top: -.5rem;
-      background-color: ${({theme}) => theme.colors.neutral[300]};
-      border-radius: 8px;
-    } 
-  }
-
-  @media (min-width: 768px) {
-    & + &::before {
-      width: 68%;
-    } 
-  }
 `;
 
+
 interface ITitleFilter {
-  open: boolean;
+  isOpen: boolean;
 }
 
 export const TitleFilter = styled.span<ITitleFilter>`
   @media (min-width: 375px) {
     align-items: center;
-    border-radius: .2rem;
+    border-radius: ${({isOpen}) => !isOpen ? '.2rem' : '.2rem .2rem 0 0'};
     background-color: ${({theme}) => theme.colors.primary[100]};
     cursor: pointer;
     color:  ${({theme}) => theme.colors.neutral[500]};
     display: flex;
-    font-size: .625rem;
+    font-size: .825rem;
     font-weight: ${({theme}) => theme.font.weights[700]};
-    height: 30px;
+    height: 45px;
     justify-content: space-between;
     padding: 0 .325rem;
     text-transform: uppercase;
 
     > svg {
       transition: transform .4s;
-      transform: ${({open}) => open ? 'rotate(180deg)' : 'rotate(0deg)' };
-    } 
+      transform: ${({isOpen}) => isOpen ? 'rotate(180deg)' : 'rotate(0deg)' };
+    }
   }
   
   @media (min-width: 768px) {
-    font-size: .725rem;
-    height: 35px;
-    letter-spacing: 2px;
+    font-size: .825rem;
+    height: 45px;
+    letter-spacing: 1px;
     padding: 0 1rem;
   }
+  
 `;
 
 export const FilterOrderContainer = styled.ul`
@@ -88,7 +57,6 @@ export const FilterOrderContainer = styled.ul`
   background-color: ${({ theme }) => theme.colors.neutral[500]};
   overflow: auto;
   position: relative;
-  top: -4px;
 
   &.active-menu-order {
     animation: ${fade} .6s forwards;
@@ -97,7 +65,6 @@ export const FilterOrderContainer = styled.ul`
   }
 
   &.disabled-menu-order {
-    animation: ${hiddenFilterOrder} .3s forwards;
     height: 0px;
   }
 
@@ -118,7 +85,7 @@ export const FilterOrderContainer = styled.ul`
 export const FilterOrderItem = styled.li`
   @media (min-width: 375px) {
     cursor: pointer;
-    font-size: .7rem;
+    font-size: .8rem;
     padding: .5rem .325rem;
     position: relative; 
   }

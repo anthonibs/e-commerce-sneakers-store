@@ -68,7 +68,10 @@ const SummaryListOfProductsInCart = () => {
 
       <Button
         onClick={handleShopCart}
-        disabled={!isProductInsideCart}>
+        disabled={!isProductInsideCart}
+        aria-disabled={!isProductInsideCart}
+        aria-label='Go to cart'
+      >
         Checkout
       </Button>
     </Container>

@@ -19,6 +19,7 @@ import {
   Title
 } from './Header';
 
+
 import SummaryListOfProductsInCart from './SummaryListOfProductsInCart';
 import Logo from 'components/svgs/Logo';
 import IconCart from 'components/svgs/IconCart';
@@ -52,7 +53,7 @@ const Header = () => {
     <HeaderContainer>
       <Container>
         <LogoContainer>
-          <Link to={'/'}>
+          <Link to={'/'} arial-label='Back to home page'>
             <Logo />
           </Link>
         </LogoContainer>
@@ -60,13 +61,19 @@ const Header = () => {
         <ControlNavLink>
           <ButtonMenuMobile 
             onClick={() => setOpenMenuHamburger(prevState => !prevState)}
+            data-menu={openMenuHamburger}
+            aria-label='Open mobile menu'
           >
             {openMenuHamburger 
               ? <IconClose/> 
               : <IconMenu />}
           </ButtonMenuMobile>
 
-          <Navbar openMenu={openMenuHamburger}>
+          <Navbar 
+            openMenu={openMenuHamburger}
+            aria-hidden={!openMenuHamburger}
+            aria-label='Navigation menu'
+          >
             <NavLink
               to={'/collections'}
               className={({ isActive }) => isActive ? 'activePage' : ''}
@@ -104,7 +111,7 @@ const Header = () => {
           </Navbar>
         </ControlNavLink>
 
-        <ProfileContainer>
+        <ProfileContainer>        
           <ButtonContainerCart
             cartHover={onCartHover}
             onMouseEnter={handlerEnterCartField}
@@ -112,13 +119,16 @@ const Header = () => {
             <ShoppingCart
               onClick={handlerNavigateToCart}
               disabled={isProductCart}
+              aria-labelledby='cart-summary'  
             >
               <IconCart />
+
               <QuantityOfProducts
                 disabled={isProductCart}
               >
                 {!isProductCart && quantity?.totalQuantity}
               </QuantityOfProducts>
+
             </ShoppingCart>
           </ButtonContainerCart>
 
@@ -128,6 +138,8 @@ const Header = () => {
 
           <ContainerSummary
             cartHover={onCartHover}
+            aria-hidden={!onCartHover}
+            id='cart-summary'
             onMouseLeave={handlerExitCartField}
           >
             <SummaryListOfProductsInCart />

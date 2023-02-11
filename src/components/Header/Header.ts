@@ -62,11 +62,15 @@ export const Container = styled.div`
 `;
 
 export const LogoContainer = styled.figure`
-  @media (min-width: 375px) {
+  @media (min-width: 375px) { 
     margin-left: 4rem;
-    order: 2;
     position: relative;
+    order: 2;
     z-index: 200;
+
+    > a svg {
+      pointer-events: none;
+    }
   }
 
   @media (min-width: 768px) {
@@ -102,9 +106,14 @@ export const ButtonMenuMobile = styled.button`
   @media (min-width: 375px) {
     background-color: transparent; 
     cursor: pointer;
-    margin-left: 1rem;
     position: fixed;
-    top: 28px;
+    padding: .325rem;
+    top: 22px;
+    left: 40px;
+
+    > svg {
+      pointer-events: none;
+    }
   }
 
   @media (min-width: 1000px) {
@@ -134,6 +143,7 @@ export const Navbar = styled.nav<IMenuMobile>`
       color: ${({ theme }) => theme.colors.neutral[300]};
       font-size: 1rem;
       font-weight: ${({theme}) => theme.font.weights[700]};
+      line-height: 20px;
       position: relative;
       text-decoration: none;
 

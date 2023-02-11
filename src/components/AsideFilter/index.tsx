@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import handlerSelectedFilter from 'shared/utils/selectedFilter';
 
@@ -27,16 +27,19 @@ const AsideFilter = ({
 
 
   return (
-    <Container>
+    <Container aria-labelledby={title}>
       <TitleFilter
-        open={openFilter}
-        onClick={() => setOpenFilter(prevState => !prevState)}
+        onClick={() => setOpenFilter(!openFilter)}
+        isOpen={openFilter}
+        id={title}
+        aria-hidden={!openFilter}
       >
         {title}
         <IoMdArrowDropdown size={18} />
       </TitleFilter>
 
       <FilterOrderContainer
+        aria-hidden={!openFilter}
         className={openFilter ? 'active-menu-order' : 'disabled-menu-order'}
       >
         {options.map((item: string, index: number) => (
@@ -49,8 +52,8 @@ const AsideFilter = ({
           </FilterOrderItem>
         ))}
       </FilterOrderContainer>
-    </Container>
+    </Container >
   );
 };
 
-export default AsideFilter;
+export default memo(AsideFilter);

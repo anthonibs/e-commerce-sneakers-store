@@ -67,7 +67,7 @@ const SliderProduct = ({ thumbnail, slider, title }: ISliderProduct) => {
     <Container>
       <MainProductImage>
         <PreviousSlider className='previous-slider'>
-          <ButtonControl onClick={() => previousSlider(indexImage)}>
+          <ButtonControl onClick={() => previousSlider(indexImage)}  aria-label='Previous'>
             <IconPrevious />
           </ButtonControl>
         </PreviousSlider>
@@ -85,26 +85,26 @@ const SliderProduct = ({ thumbnail, slider, title }: ISliderProduct) => {
         }
 
         <NextSlider className='next-slider'>
-          <ButtonControl onClick={() => nextSlider(indexImage)}>
+          <ButtonControl onClick={() => nextSlider(indexImage)}  aria-label='Next'>
             <IconNext />
           </ButtonControl>
         </NextSlider>
       </MainProductImage>
 
-      {innerWidth 
+      {innerWidth
         &&
         <GalleriesProducts>
           {slider
-          && slider?.map((image: string, index: number) => (
-            <GalleryProduct key={index}
-              onClick={() => openImageIndex(index)}
-            >
-              <img
-                src={`/assets/products-shoes/${image}.webp`}
-                alt={`Product gallery image, image ${index + 1} of ${slider?.length}`}
-              />
-            </GalleryProduct>
-          ))}
+            && slider?.map((image: string, index: number) => (
+              <GalleryProduct key={index}
+                onClick={() => openImageIndex(index)}
+              >
+                <img
+                  src={`/assets/products-shoes/${image}.webp`}
+                  alt={`Product gallery image, image ${index + 1} of ${slider?.length}`}
+                />
+              </GalleryProduct>
+            ))}
         </GalleriesProducts>
       }
 
@@ -119,7 +119,10 @@ const SliderProduct = ({ thumbnail, slider, title }: ISliderProduct) => {
 
             <MainImage>
               <PreviousSlider>
-                <ButtonControl onClick={() => previousSlider(indexImage)}>
+                <ButtonControl
+                  onClick={() => previousSlider(indexImage)}
+                  aria-label='Previous'
+                >
                   <IconPrevious />
                 </ButtonControl>
               </PreviousSlider>
@@ -130,7 +133,10 @@ const SliderProduct = ({ thumbnail, slider, title }: ISliderProduct) => {
               />
 
               <NextSlider>
-                <ButtonControl onClick={() => nextSlider(indexImage)}>
+                <ButtonControl 
+                  onClick={() => nextSlider(indexImage)}
+                  arial-label='Next'
+                >
                   <IconNext />
                 </ButtonControl>
               </NextSlider>
