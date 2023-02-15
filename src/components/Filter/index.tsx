@@ -19,34 +19,46 @@ interface IFilter {
 }
 
 const Filter = ({ selected, setSelected, options, filterDefault }: IFilter) => {
-  const [open, setOpen] = useState<boolean>(false);
+  
+  const [openModalMobileFilter, setOpenModalMobileFilter] = useState<boolean>(false);
 
   function handlerExitFilterField() {
-    setOpen(false);
+    setOpenModalMobileFilter(false);
   }
-  
+
+  function handleOpenFilter(event: React.KeyboardEvent<HTMLButtonElement>) {
+    if (event.key === 'Enter') setOpenModalMobileFilter(prevState => !prevState);
+  }
+
+  function handleSelectedFilter(event: React.KeyboardEvent<HTMLLIElement>, item: string) {
+    if (event.key === 'Enter') handlerSelectedFilter(item.toLowerCase(), selected, setSelected);
+  }
+
 
   return (
     <Container>
       <ButtonFilter
         onMouseLeave={handlerExitFilterField}
+        onKeyUp={(e) => handleOpenFilter(e)}
       >
         <TitleFilter
-          open={open}
-          onClick={() => setOpen(prevState => !prevState)}
+          open={openModalMobileFilter}
+          onClick={() => setOpenModalMobileFilter(prevState => !prevState)}
         >
           {selected || filterDefault}
-          <IoMdArrowDropdown size={24} />
+          <IoMdArrowDropdown size={18} />
         </TitleFilter>
 
         <ListOrderContainer
-          className={open ? 'active-menu-order' : 'disabled-menu-order'}
+          className={openModalMobileFilter ? 'active-menu-order' : 'disabled-menu-order'}
         >
           {options.map((item: string, index: number) => (
             <ListOrderItem
               key={index}
-              onClick={() => handlerSelectedFilter(item.toLowerCase(), selected, setSelected)}
+              tabIndex={0}
               className={item.toLowerCase() === selected ? 'active-filter' : ''}
+              onClick={() => handlerSelectedFilter(item.toLowerCase(), selected, setSelected)}
+              onKeyUp={(event) => handleSelectedFilter(event, item.toLowerCase())}
             >
               {item}
             </ListOrderItem>

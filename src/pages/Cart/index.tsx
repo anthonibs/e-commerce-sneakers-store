@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
 
-import { HiMinus, HiPlus } from 'react-icons/hi';
+import { HiMinus, HiPlus, HiTrash } from 'react-icons/hi';
 
 import { useCartContext } from 'shared/hooks/useCart';
 import { IProduct } from 'shared/interfaces/ProductsInterfaces';
@@ -38,14 +38,14 @@ const Cart = () => {
           <Title>
             Shopping cart
           </Title>
-          
+
           <RemoveAll
             onClick={handlerRemoveAll}
           >
             Remove all items
           </RemoveAll>
         </> :
-        
+
         <Title>
           Your Sneakers shopping cart is empty.
         </Title>
@@ -53,10 +53,13 @@ const Cart = () => {
 
 
       <Wrapper>
-        <p>Price</p>
+        <h2>Price</h2>
         <ResumeList>
           {listCart.map((item: IProduct) => (
-            <CardProduct key={item.id}>
+            <CardProduct
+              key={item.id}
+              tabIndex={0}
+            >
               <Image>
                 <img src={`/assets/products-shoes/${item.thumbnail}.webp`} alt={item.title} />
               </Image>
@@ -67,6 +70,7 @@ const Cart = () => {
                     {item.title}
                   </SubTitle>
                 </Link>
+
                 {item.stock >= item.quantity
                   ? <span className='in-stock'>Em estoque</span>
                   : <span className='out-stock'>Sem estoque</span>
@@ -74,28 +78,38 @@ const Cart = () => {
 
                 <ControlButton>
                   <WrapperButton>
-                    <ButtonShop 
+                    <ButtonShop
                       onClick={() => handleMinusCart(item.id)}
+                      arial-label='Decrease product'
                     >
                       <HiMinus />
                     </ButtonShop>
                     <QuantityProduct>
-                      {productAddToCart(item.id)?.quantity || 0}
+                      <input
+                        type="text"
+                        readOnly
+                        value={productAddToCart(item.id)?.quantity || 0}
+                      />
                     </QuantityProduct>
-                    <ButtonShop onClick={() => handlePlusCart(item)}>
+                    <ButtonShop
+                      onClick={() => handlePlusCart(item)}
+                      aria-label='Add product'
+                    >
                       <HiPlus />
                     </ButtonShop>
                   </WrapperButton>
 
-                  <RemoveItem 
+                  <RemoveItem
                     onClick={() => handlerRemoveProductCart(item.id)}
+                    aria-label='Remover item'
                   >
-                    Remove item
+                    <HiTrash size={18} />
+                    <span aria-hidden={true}>Remove item</span>
                   </RemoveItem>
                 </ControlButton>
               </Info>
 
-             
+
               <Price>
                 {priceFormatted(item.priceCurrent)}
               </Price>
@@ -103,7 +117,7 @@ const Cart = () => {
           ))}
         </ResumeList>
 
-        <SubTotal>
+        <SubTotal tabIndex={0}>
           Subtotal ({quantity.totalQuantity} items): <strong>{priceFormatted(quantity.totalValue)}</strong>
         </SubTotal>
       </Wrapper>

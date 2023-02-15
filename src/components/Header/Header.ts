@@ -109,7 +109,7 @@ export const ButtonMenuMobile = styled.button`
     position: fixed;
     padding: .325rem;
     top: 22px;
-    left: 40px;
+    left: 20px;
 
     > svg {
       pointer-events: none;
@@ -137,6 +137,7 @@ export const Navbar = styled.nav<IMenuMobile>`
     position: fixed;
     transition: all 1s;
     top: 70px;
+    visibility: ${({ openMenu }) => openMenu ? 'visible' : 'hidden'};
     width: 250px;
 
     a {
@@ -167,6 +168,7 @@ export const Navbar = styled.nav<IMenuMobile>`
     position: relative;
     padding: 0;
     top: 0px;
+    visibility: visible;
     width: 100%;
 
     .activePage {
@@ -184,13 +186,58 @@ export const Navbar = styled.nav<IMenuMobile>`
   }
 `;
 
+const opacityFadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+`;
+
+const opacityFadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+`;
+
+export const BoxShadowModal = styled.div`
+  @media (max-width: 1000px) {
+    position: fixed;
+    cursor: pointer;
+    width: calc(100% - 250px);
+    height: 100vh;
+    right: 0;
+    top: 70px;
+    backdrop-filter: contrast(55%) blur(1px);
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px inset, rgba(255, 255, 255, 0.2) 0px 18px 36px -18px inset;
+
+    &.box-shadow {
+      animation: ${opacityFadeIn} 2500ms forwards;
+    }
+
+    &.box-shadow-out {
+      animation: ${opacityFadeOut} 500ms forwards;
+    } 
+  }
+`;
+
 export const Title = styled.span`
   @media (min-width: 1000px) {
+    color: inherit;
+    background-color: inherit;
+
     &:hover::before {
       animation: ${lineMenu} .3s ease-in forwards;
       bottom: -.5rem;
       border-radius: 2px;
       background-color: ${({ theme }) => theme.colors.neutral[200]};
+      color: inherit;
       content: "";
       display: flex;
       height: 3px;
@@ -218,14 +265,18 @@ export const ProfileContainer = styled.div`
 export const ButtonContainerCart = styled.div<ISummaryCart>`
   &:hover {
     display:  ${({ cartHover }) => cartHover === true ? 'block' : 'none'};
-}
+  }
 `;
 
 export const ImageContainer = styled.figure`
   border: 3px solid transparent;
   border-radius: 50px;
   cursor: pointer;
-  transition: border .5s ease-out;
+  transition: border .5s ease-out;  
+
+  &:focus-visible {
+    outline: 2px solid;
+  }
 
   &:hover {
     border: 3px solid  ${({ theme }) => theme.colors.primary[100]};
@@ -253,16 +304,20 @@ interface IOpenCart {
 
 export const ShoppingCart = styled.button<IOpenCart>`
   @media (min-width: 375px) {
-    display: flex;
     align-items: center;
+    background-color: transparent;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    height: 40px;
     justify-content:center;
     position: relative;
-    background-color: transparent;
-    height: 40px;
-    width: 40px;
-    cursor: pointer;
-    border-radius: 25px;
     transition: background .3s ease-in-out;
+    width: 40px;
+
+    &:focus-visible {
+      outline: 2px solid;
+    }
   
     > svg path {
       opacity: ${({ disabled }) => disabled ? '.2' : '1'};
@@ -302,6 +357,7 @@ export const QuantityOfProducts = styled.span<IOpenCart>`
     width: 26px;
   }
 `;
+
 
 interface ISummaryCart {
   cartHover: boolean

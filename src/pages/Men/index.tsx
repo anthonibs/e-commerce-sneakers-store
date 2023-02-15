@@ -43,7 +43,6 @@ const Men = () => {
   const [modalFilter, setModalFilter] = useState<boolean>(false);
 
 
-
   // Example of filter
   const [example, setExample] = useState('');
   const exampleTeste = ['Example 1', 'Example 2', 'Example 3', 'Example 4'];
@@ -111,7 +110,6 @@ const Men = () => {
             title='Mens shoes'
           />
 
-
           <Container>
             {innerWidth > 1000 && <AsideContainerFilter>
               <AsideFilter
@@ -132,9 +130,9 @@ const Men = () => {
             <SectionProducts>
               <Header>
                 <PageSummary>
-                  <h2>
+                  <h1>
                     MEN&apos;S TENNIS
-                  </h2>
+                  </h1>
                   <p>
                     Sneakers bets on current collections, always keeping an eye on the market, bringing technologies that offer comfort and safety when walking. And to provide the best for your feet, you will find models with extra soft finishes, lightness, flexibility, stability when walking and smart measurements. Every detail thought to offer shoes with the quality you deserve.
                   </p>
@@ -150,50 +148,51 @@ const Men = () => {
                   </ShowingResults>
 
                   <ControlFilter>
-                    {innerWidth < 1000 && <>
-                      <ButtonGridMobile
-                        selected={selected}
-                        setSelected={setSelected}
-                      />
+                    {innerWidth < 1000
+                      && <>
+                        <ButtonGridMobile
+                          selected={selected}
+                          setSelected={setSelected}
+                        />
 
-                      <FilterModal
-                        modalFilter={modalFilter}
-                        setModalFilter={setModalFilter}
-                      >
-                        <AsideFilter
-                          title='Filter by order'
-                          options={orderItems}
-                          selected={sortFilter}
-                          setSelected={setSortFilter}
-                        />
-                        <AsideFilter
-                          title='Brands'
-                          options={brandsShoes}
-                          selected={selectedBrand}
-                          setSelected={setSelectedBrand}
-                        />
-                        <AsideFilter
-                          title='Example'
-                          options={exampleTeste}
-                          selected={example}
-                          setSelected={setExample}
-                        />
-                        <AsideFilter
-                          title='Example 2'
-                          options={exampleTeste}
-                          selected={example}
-                          setSelected={setExample}
-                        />
-                      </FilterModal>
+                        <ButtonModalFilter
+                          tabIndex={0}
+                          onClick={handleModalFilter}
+                        >
+                          <BiFilterAlt size={18} />
+                          Filters
+                        </ButtonModalFilter>
 
-
-                      <ButtonModalFilter
-                        onClick={handleModalFilter}
-                      >
-                        <BiFilterAlt size={18} />
-                        Filters
-                      </ButtonModalFilter>
-                    </>
+                        <FilterModal
+                          modalFilter={modalFilter}
+                          setModalFilter={setModalFilter}
+                        >
+                          <AsideFilter
+                            title='Filter by order'
+                            options={orderItems}
+                            selected={sortFilter}
+                            setSelected={setSortFilter}
+                          />
+                          <AsideFilter
+                            title='Brands'
+                            options={brandsShoes}
+                            selected={selectedBrand}
+                            setSelected={setSelectedBrand}
+                          />
+                          <AsideFilter
+                            title='Example'
+                            options={exampleTeste}
+                            selected={example}
+                            setSelected={setExample}
+                          />
+                          <AsideFilter
+                            title='Example 2'
+                            options={exampleTeste}
+                            selected={example}
+                            setSelected={setExample}
+                          />
+                        </FilterModal>         
+                      </>
                     }
 
                     {innerWidth > 1000

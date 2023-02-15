@@ -8,7 +8,7 @@ export const Container = styled.div`
     position: fixed;
     right: -100%;
     top: 0;
-    transition: right .6s ease-in;
+    transition: all .6s ease-in;
     width: 100%;
     z-index: 9999;
   }
@@ -23,6 +23,7 @@ export const Container = styled.div`
 
   &.active-filter {
     right: 0%;
+    visibility: visible;
   }
 
 `;

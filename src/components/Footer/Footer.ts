@@ -35,7 +35,7 @@ export const Container = styled.div`
 export const GroupLink = styled.div`
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h4`
   @media (min-width: 375px) {
     color: ${({ theme }) => theme.colors.primary[100]};
     font-size: 1.325rem;

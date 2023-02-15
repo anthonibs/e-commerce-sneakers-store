@@ -14,7 +14,7 @@ const hiddenFilterOrder = keyframes`
   from {
     opacity: 100%;
     top: 0;
-  }
+  } 
 
   to {
     display: none;
@@ -24,7 +24,7 @@ const hiddenFilterOrder = keyframes`
   }
 `;
 
-export const Container = styled.fieldset`
+export const Container = styled.div`
   @media (min-width: 375px) {
     height: 35px;
     position: relative;
@@ -38,6 +38,11 @@ export const ButtonFilter = styled.button`
   height: 100%;
   text-align: left;
   width: 100%;
+
+  &:focus-visible {
+    border-radius: .325rem;
+    outline: 2px solid;
+  }
 `;
 
 interface ITitleFilter {

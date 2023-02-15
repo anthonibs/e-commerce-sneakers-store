@@ -16,7 +16,7 @@ const animationImage = keyframes`
 
 export const Container = styled.figure`
   height: 100%;
-  width: 100%;
+  width: 100%;  
 `;
 
 export const MainProductImage = styled.div`
@@ -78,7 +78,8 @@ export const GalleryProduct = styled.li`
   position: relative;
   width: 100%;
 
-  &:hover::before {
+  &:focus-visible::before, 
+  &:hover::before  {
     animation: ${animationImage} 1s ease-out forwards;
     bottom: 0;
     border-radius: 10px;
@@ -210,7 +211,7 @@ export const NextSlider = styled.div`
 
 export const ButtonControl = styled.button`
   align-items: center;
-  background-color: ${({theme}) => theme.colors.neutral[500]};
+  background-color: ${({ theme }) => theme.colors.neutral[500]};
   border-radius: 30px;
   cursor: pointer;
   display: flex;
@@ -222,7 +223,7 @@ export const ButtonControl = styled.button`
   
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 3px;
-    background-color: ${({theme}) => theme.colors.neutral[700]};
+    background-color: ${({ theme }) => theme.colors.neutral[700]};
   }
 `;
 
@@ -243,11 +244,13 @@ export const ThumbnailItem = styled.li`
   position: relative;
   width: 100%;
 
-  &:hover {
-    animation: ${animationImage} .6s ease-out forwards;
+  &:hover, 
+  &:focus-visible {
+    animation: ${animationImage} 1s ease-out forwards;
   }
 
-  &:hover::before {
+  &:hover::before,
+  &:focus-visible::before {
     animation: ${animationImage} 1s ease-out forwards;
     bottom: 0;
     content: '';

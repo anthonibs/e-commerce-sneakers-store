@@ -55,14 +55,14 @@ export const Header = styled.header`
 export const PageSummary = styled.div`
   margin-bottom: 1.6rem;
 
-  > h2 {
+  > h1 {
     color: ${({ theme }) => theme.colors.neutral[600]};
     font-size: 1.625rem;
   }
   
   > p {
     color: ${({ theme }) => theme.colors.neutral[600]};
-    font-size: .925rem;
+    font-size: 1rem;
     line-height: 1.2;
     margin-top: .625rem;
   }
@@ -126,7 +126,6 @@ export const ButtonModalFilter = styled.button`
   line-height: 20px;
   padding: .325rem;
   transition: all .2s ease-out;
-
 
   & > svg {
     fill: ${({ theme }) => theme.colors.neutral[200]};

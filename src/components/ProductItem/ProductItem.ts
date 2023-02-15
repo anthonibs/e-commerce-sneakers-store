@@ -62,7 +62,7 @@ export const ContainerInfo = styled.div`
 export const TitleContainer = styled.div`
 `;
 
-export const Company = styled.span`
+export const Company = styled.h2`
   @media (min-width: 375px) {
     color: ${({ theme }) => theme.colors.primary[100]};
     font-size: 1rem;
@@ -75,9 +75,10 @@ export const Company = styled.span`
   }
 `;
 
-export const ProductName = styled.h2`
+export const ProductName = styled.h1`
   @media (min-width: 375px) {
     color: ${({ theme }) => theme.colors.neutral[100]};
+    background-color: inherit;
     font-size: 1.5rem;
     font-weight: ${({ theme }) => theme.font.weights[700]}; 
     line-height: 1;
@@ -106,13 +107,9 @@ export const DescriptionWrap = styled.div`
 export const TextDescription = styled.p`
   @media (min-width: 375px) {
     color: ${({ theme }) => theme.colors.neutral[200]};
-    font-size: .9rem;
+    font-size: 1rem;
     line-height: 1.6;
     word-break: break-word;
-  }
-
-  @media (min-width: 768px) {
-    font-size: 1rem;
   }
 `;
 
@@ -203,7 +200,7 @@ export const ButtonCart = styled.button`
 
     &:disabled {
       background-color: ${({ theme }) => theme.colors.neutral[700]};
-      cursor: default;
+      cursor: not-allowed;
       transition: all .6s ease-in-out;
     }
 

@@ -10,6 +10,7 @@ const fade = keyframes`
   }
 `;
 
+
 export const Container = styled.div`
   background-color: ${({theme}) => theme.colors.neutral[400]};
   height: fit-content;
@@ -21,7 +22,7 @@ interface ITitleFilter {
   isOpen: boolean;
 }
 
-export const TitleFilter = styled.span<ITitleFilter>`
+export const TitleFilter = styled.button<ITitleFilter>`
   @media (min-width: 375px) {
     align-items: center;
     border-radius: ${({isOpen}) => !isOpen ? '.2rem' : '.2rem .2rem 0 0'};
@@ -35,6 +36,7 @@ export const TitleFilter = styled.span<ITitleFilter>`
     justify-content: space-between;
     padding: 0 .325rem;
     text-transform: uppercase;
+    width: 100%;
 
     > svg {
       transition: transform .4s;
@@ -48,8 +50,8 @@ export const TitleFilter = styled.span<ITitleFilter>`
     letter-spacing: 1px;
     padding: 0 1rem;
   }
-  
 `;
+
 
 export const FilterOrderContainer = styled.ul`
   border-bottom-right-radius: .325rem;
@@ -59,13 +61,17 @@ export const FilterOrderContainer = styled.ul`
   position: relative;
 
   &.active-menu-order {
-    animation: ${fade} .6s forwards;
+    animation: ${fade} 1s forwards;
+    display: block;
     height: fit-content;
     max-height: 180px;
+    visibility: visible;
   }
 
   &.disabled-menu-order {
+    display: none;
     height: 0px;
+    visibility: hidden;
   }
 
   &::-webkit-scrollbar {
@@ -81,6 +87,7 @@ export const FilterOrderContainer = styled.ul`
     background-color: ${({ theme }) => theme.colors.primary[100]};
   }
 `;
+
 
 export const FilterOrderItem = styled.li`
   @media (min-width: 375px) {

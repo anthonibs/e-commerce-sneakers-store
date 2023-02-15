@@ -67,7 +67,7 @@ const Home = () => {
             duration={1000}
             interval={4000}
             indicators={true}
-            animation={'slide'}
+            animation={'fade'}
             indicatorIconButtonProps={{
               style: {
                 color: '#B6BCC8',
@@ -86,7 +86,7 @@ const Home = () => {
                 alignItems: 'center',
                 gap: '5px',
                 width: '100%',
-                left: '50%',
+                left: '40px',
                 position: 'absolute',
                 zIndex: 9999,
                 bottom: '10px',
@@ -100,7 +100,7 @@ const Home = () => {
                 url={item.image}
                 link={item.link}
                 title={item.title}
-                height="380px"
+                height="100%"
                 width='100%'
                 objectFit='fill'
               />)}

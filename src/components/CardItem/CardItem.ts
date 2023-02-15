@@ -120,7 +120,7 @@ export const HeaderContainer = styled.header`
   padding: 0 .625rem;
 `;
 
-export const HeaderTitle = styled.h2`
+export const HeaderTitle = styled.h3`
   @media (min-width: 375px) {
     color: ${({ theme }) => theme.colors.neutral[100]}; 
     font-size: .9rem;

@@ -25,14 +25,19 @@ const AsideFilter = ({
 
   const [openFilter, setOpenFilter] = useState<boolean>(false);
 
+  function handleEnableAndDisableButton(event: React.KeyboardEvent<HTMLLIElement>, item: string) {
+    if(event.key === 'Enter') handlerSelectedFilter(item, selected, setSelected);
+    if(event.key === 'Escape') setOpenFilter(false);
+  }
 
   return (
     <Container aria-labelledby={title}>
-      <TitleFilter
-        onClick={() => setOpenFilter(!openFilter)}
+      <TitleFilter  
+        onClick={() => setOpenFilter(prevState => !prevState)}
         isOpen={openFilter}
         id={title}
         aria-hidden={!openFilter}
+        tabIndex={0}
       >
         {title}
         <IoMdArrowDropdown size={18} />
@@ -45,8 +50,10 @@ const AsideFilter = ({
         {options.map((item: string, index: number) => (
           <FilterOrderItem
             key={index}
+            tabIndex={0}
             className={item.toLowerCase() === selected ? 'active-filter' : ''}
             onClick={() => handlerSelectedFilter(item, selected, setSelected)}
+            onKeyUp={(event) => handleEnableAndDisableButton(event, item)}
           >
             {item}
           </FilterOrderItem>

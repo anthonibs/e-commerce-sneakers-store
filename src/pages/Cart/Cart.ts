@@ -13,12 +13,13 @@ export const Container = styled.section`
   }
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h1`
   @media (min-width: 375px) {
     color: ${({ theme }) => theme.colors.neutral[600]};
-    font-size: 1.3rem; 
+    font-size: 1.125rem; 
     font-weight: ${({ theme }) => theme.font.weights[700]}; 
     line-height: 1.3;
+    width: 75%;
   }
 
   @media (min-width: 768px) {
@@ -50,7 +51,7 @@ export const Wrapper = styled.div`
     margin-bottom: 3rem;
     width: 100%;
 
-    > p {
+    > h2 {
       color: ${({theme}) => theme.colors.neutral[600]};
       font-size: .925rem;
       text-align: right;
@@ -71,6 +72,7 @@ export const ResumeList = styled.ul`
   border-bottom: 2px solid ${({ theme }) => theme.colors.neutral[400]};
   border-top: 2px solid ${({ theme }) => theme.colors.neutral[400]};
   margin: .325rem 0;
+  width: 100%;
 `;
 
 export const CardProduct = styled.li`
@@ -78,19 +80,22 @@ export const CardProduct = styled.li`
     border-bottom: 2px solid ${({ theme }) => theme.colors.neutral[400]};
     display: grid;
     gap: 1rem;
-    grid-template-columns: 80px 1fr 100px;
+    grid-template-columns: 90px auto auto;
+    grid-template-rows: 1fr;
     grid-template-areas: 
-    'image product price'
-    ;
+      'image product price';
     height: auto;
-    padding: .625rem 0; 
-    width: 100%;
+    padding: .625rem .325rem;
+
+    &:focus-visible {
+      outline: 2px solid black;
+    }
   }
 
   @media (min-width: 768px) {
     gap: 2rem;
     grid-template-columns: 140px 1fr 180px;
-    padding: 2rem 0; 
+    padding: 2rem .325rem; 
   }
 
   @media (min-width: 1000px) {
@@ -114,7 +119,7 @@ export const Image = styled.figure`
 export const SubTitle = styled.h3`
   @media (min-width: 375px) {
     color: ${({ theme }) => theme.colors.primary[100]}; 
-    font-size: .9rem;
+    font-size: 1rem;
   }
 
   @media (min-width: 768px) {
@@ -130,12 +135,15 @@ export const Info = styled.div`
   }
 
   @media (min-width: 375px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     > span {
       display: block;
-      font-size: .7rem;
+      font-size: .8rem;
       font-weight: ${({ theme }) => theme.font.weights[700]};
-      margin-top: .3rem;
+      margin-top: .225rem;
 
       &.in-stock {
         color: #038C3E;
@@ -148,9 +156,6 @@ export const Info = styled.div`
   }
 
   @media (min-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     margin-top: .6rem; 
 
     > span {
@@ -177,7 +182,7 @@ export const ControlButton = styled.div`
 
 export const WrapperButton = styled.div`
   border-radius: .625rem;
-  background-color: whitesmoke;
+  background-color: ${({theme}) => theme.colors.neutral[400]};
   display: flex;
   overflow: hidden;
   width: fit-content;
@@ -207,6 +212,7 @@ export const ButtonShop = styled.button`
 
   & svg {
     fill: ${({ theme }) => theme.colors.primary[100]};
+    pointer-events: none;
     transition: all .5s ease-in-out;
   }
 
@@ -222,20 +228,29 @@ export const ButtonShop = styled.button`
 export const QuantityProduct = styled.span`
   @media (min-width: 375px) {
     align-items: center;
-    color: ${({ theme }) => theme.colors.neutral[600]};
-    cursor: pointer;
     display: flex;
-    font-size: 1rem;
-    font-weight: ${({ theme }) => theme.font.weights[700]}; 
     height: 30px;
     justify-content: center;
     width: 35px;
+
+    > input {
+      background-color: transparent;
+      color: ${({ theme }) => theme.colors.neutral[200]};
+      font-size: 1rem;
+      font-weight: ${({ theme }) => theme.font.weights[700]}; 
+      height: 100%;
+      text-align: center;
+      width: 100%;
+    }
   }
 
   @media (min-width: 768px) {
-    font-size: 1.6rem; 
     height: 50px;
     width: 40px;
+
+    > input {
+      font-size: 1.6rem; 
+    }
   }
 `;
 
@@ -248,21 +263,33 @@ export const RemoveItem = styled.button`
     font-size: .7rem;
     font-weight: ${({theme}) => theme.font.weights[700]};
     margin-left: 2rem;
-    padding: .425rem;
+    padding: .325rem;
     width: fit-content;
+
+    > span {
+      display: none;
+    }
   }
 
   @media (min-width: 768px) {
     font-size: .825rem;
     margin-left: 0rem;
     padding: .325rem 1rem;
+
+    > svg {
+      display: none;
+    }
+
+    > span {
+      display: block;
+    }
   }
 `;
 
 export const Price = styled.div`
   @media (min-width: 375px) {
     color: ${({theme}) => theme.colors.neutral[600]}; 
-    font-size: 1.2rem;
+    font-size: 1rem;
     grid-area: price;
     text-align: right;
   }
@@ -277,12 +304,15 @@ export const Price = styled.div`
   }
 `;
 
+
 export const SubTotal = styled.span`
   @media (min-width: 375px) {
     display: block;
     font-size: .925rem;
-    margin-top: .825rem; 
+    margin: .825rem 0 0 auto; 
+    padding: .32rem;
     text-align: right;
+    width: fit-content;
   }
 
   @media (min-width: 768px) {

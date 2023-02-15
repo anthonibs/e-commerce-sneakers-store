@@ -63,11 +63,17 @@ const SliderProduct = ({ thumbnail, slider, title }: ISliderProduct) => {
   }, [width]);
 
 
+  function handleEnableAndDisableButton(event: React.KeyboardEvent, item: number) {
+    if(event.key === 'Enter') openImageIndex(item);
+    if(event.key === 'Escape') setOverlayImageProduct(false);
+  }
+
+
   return (
     <Container>
       <MainProductImage>
         <PreviousSlider className='previous-slider'>
-          <ButtonControl onClick={() => previousSlider(indexImage)}  aria-label='Previous'>
+          <ButtonControl onClick={() => previousSlider(indexImage)}  aria-label='Previous Image'>
             <IconPrevious />
           </ButtonControl>
         </PreviousSlider>
@@ -85,7 +91,7 @@ const SliderProduct = ({ thumbnail, slider, title }: ISliderProduct) => {
         }
 
         <NextSlider className='next-slider'>
-          <ButtonControl onClick={() => nextSlider(indexImage)}  aria-label='Next'>
+          <ButtonControl onClick={() => nextSlider(indexImage)}  aria-label='Next Image'>
             <IconNext />
           </ButtonControl>
         </NextSlider>
@@ -98,6 +104,8 @@ const SliderProduct = ({ thumbnail, slider, title }: ISliderProduct) => {
             && slider?.map((image: string, index: number) => (
               <GalleryProduct key={index}
                 onClick={() => openImageIndex(index)}
+                onKeyUp={(event) => handleEnableAndDisableButton(event, index)}
+                tabIndex={0}
               >
                 <img
                   src={`/assets/products-shoes/${image}.webp`}

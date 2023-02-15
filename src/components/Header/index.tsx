@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useCartContext } from 'shared/hooks/useCart';
 
 import {
+  BoxShadowModal,
   ButtonContainerCart,
   ButtonMenuMobile,
   Container,
@@ -60,20 +61,27 @@ const Header = () => {
 
         <ControlNavLink>
           <ButtonMenuMobile 
-            onClick={() => setOpenMenuHamburger(prevState => !prevState)}
-            data-menu={openMenuHamburger}
             aria-label='Open mobile menu'
+            data-menu={openMenuHamburger}
+            onClick={() => setOpenMenuHamburger(prevState => !prevState)}
           >
             {openMenuHamburger 
               ? <IconClose/> 
               : <IconMenu />}
           </ButtonMenuMobile>
 
+
           <Navbar 
+            aria-label='Navigation menu'
             openMenu={openMenuHamburger}
             aria-hidden={!openMenuHamburger}
-            aria-label='Navigation menu'
-          >
+          > 
+            <BoxShadowModal
+              aria-hidden
+              onClick={() => setOpenMenuHamburger(prevState => !prevState)}
+              className={openMenuHamburger ? 'box-shadow' : 'box-shadow-out'} 
+            />
+
             <NavLink
               to={'/collections'}
               className={({ isActive }) => isActive ? 'activePage' : ''}
@@ -111,20 +119,24 @@ const Header = () => {
           </Navbar>
         </ControlNavLink>
 
+
         <ProfileContainer>        
           <ButtonContainerCart
             cartHover={onCartHover}
             onMouseEnter={handlerEnterCartField}
+            onTouchMove={handlerEnterCartField}
           >
             <ShoppingCart
-              onClick={handlerNavigateToCart}
-              disabled={isProductCart}
+              tabIndex={0}
               aria-labelledby='cart-summary'  
+              disabled={isProductCart}
+              onClick={handlerNavigateToCart}
             >
               <IconCart />
 
               <QuantityOfProducts
                 disabled={isProductCart}
+                aria-label='Quantity of products in the cart'
               >
                 {!isProductCart && quantity?.totalQuantity}
               </QuantityOfProducts>
@@ -132,15 +144,16 @@ const Header = () => {
             </ShoppingCart>
           </ButtonContainerCart>
 
-          <ImageContainer>
-            <Image src={profileImg} alt="Sneakers Store Logo" />
+          <ImageContainer tabIndex={0}>
+            <Image src={profileImg} alt="Your profile picture" />
           </ImageContainer>
 
           <ContainerSummary
+            id='cart-summary'
             cartHover={onCartHover}
             aria-hidden={!onCartHover}
-            id='cart-summary'
             onMouseLeave={handlerExitCartField}
+            onTouchMove={handlerExitCartField}
           >
             <SummaryListOfProductsInCart />
           </ContainerSummary>
