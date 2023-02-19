@@ -143,8 +143,8 @@ export const ControlInfo = styled.section`
   position: relative;
 `;
 
-export const ControlStarRating = styled.span`
-  display: block;
+export const ControlStarRating = styled.div`
+  display: inline-block;
   padding: .325rem .625rem;
 `;
 

@@ -75,7 +75,7 @@ const CardItem = ({
 
       <ControlInfo>
         <ControlStarRating>
-          <StarRating rating={rating} />
+          <StarRating stars={rating} />
         </ControlStarRating>
 
         <FreeShipping>
