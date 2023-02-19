@@ -1,28 +1,34 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
 
-import { Container, ListContainer, ListItem } from './Home';
+import { CategoryContainer, Container, Title } from './Home';
 
 import BannerMain from 'components/BannerMain';
-import CardItem from 'components/CardItem';
 
 import { IProduct } from 'shared/interfaces/ProductsInterfaces';
 import ProductsService from 'server/ProductsService';
-import Spinner from 'components/Spinner';
 
+import { ICategories } from 'shared/interfaces/CategoryInterfaces';
+import CategoriesService from 'server/CategoriesService';
+import SliderCategory from 'components/SliderCategory';
+import ScrollToTop from 'components/ScrollToTop';
 
 
 const Home = () => {
 
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [categories, setCategories] = useState<ICategories[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-
-  const loadProducts = useCallback(async () => {
+  const loadAPIData = useCallback(async () => {
     try {
-      const productsList = await ProductsService.listProducts();
-      setProducts(productsList);
+      const listProducts = await ProductsService.listProducts();
+      const listCategories = await CategoriesService.listCategories();
+     
+      setProducts(listProducts);
+      setCategories(listCategories);
       setLoading(true);
+
     } catch (error) {
       console.log(error);
     } finally {
@@ -32,8 +38,8 @@ const Home = () => {
 
 
   useEffect(() => {
-    loadProducts();
-  }, [loadProducts]);
+    loadAPIData();
+  }, [loadAPIData]);
 
 
   // Banner list array
@@ -55,9 +61,17 @@ const Home = () => {
     },
   ];
 
+
+  // Sort three categories every time the page is loaded
+  const sortCategories = useMemo(() => {
+    return categories.sort(() => 0.5 - Math.random()).splice(0, 3);
+  }, [categories]);
+
+
   return (
     <Container>
-      {loading && <Spinner />}
+      <ScrollToTop />
+
       {!loading
         &&
         <>
@@ -106,16 +120,18 @@ const Home = () => {
               />)}
           </Carousel>
 
-          <ListContainer>
-            {products.map((product: IProduct) => (
-              <ListItem key={product.id}>
-                <CardItem
-                  key={product.id}
-                  product={product}
-                />
-              </ListItem>
-            ))}
-          </ListContainer>
+          {sortCategories.map(item =>
+            <CategoryContainer key={item.id}>
+              <Title>
+                {item.category}
+              </Title>
+
+              <SliderCategory
+                card={item}
+                products={products}
+              />
+            </CategoryContainer>
+          )}
         </>
       }
     </Container >
