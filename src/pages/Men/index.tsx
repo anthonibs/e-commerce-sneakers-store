@@ -27,6 +27,7 @@ import ButtonGridMobile from 'components/ButtonGridMobile';
 
 import { BiFilterAlt } from 'react-icons/bi';
 import FilterModal from 'components/FilterModal';
+import ScrollToTop from 'components/ScrollToTop';
 
 const orderItems = ['Relevance', 'Biggest price', 'Lowest price'];
 
@@ -49,15 +50,17 @@ const Men = () => {
 
 
   const loaderProducts = useCallback(async () => {
-    try {
-      const response = await ProductsService.listProducts();
-      setProducts(response);
-      setLoading(true);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
+    setTimeout(async () => {
+      try {
+        const response = await ProductsService.listProducts();
+        setProducts(response);
+        setLoading(true);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }, 1000);
   }, []);
 
 
@@ -98,141 +101,139 @@ const Men = () => {
 
   return (
     <>
-      {loading && <Spinner />}
+      <ScrollToTop />
 
-      {!loading &&
-        <>
-          <BannerMain
-            height='260px'
-            width='100%'
-            objectFit='cover'
-            url='assets/banners/sneakers-and-essential.png'
-            title='Mens shoes'
-          />
+      <BannerMain
+        height='260px'
+        width='100%'
+        objectFit='cover'
+        url='assets/banners/sneakers-and-essential.png'
+        title='Mens shoes'
+      />
 
-          <Container>
-            {innerWidth > 1000 && <AsideContainerFilter>
-              <AsideFilter
-                title='Brands'
-                options={brandsShoes}
-                selected={selectedBrand}
-                setSelected={setSelectedBrand}
-              />
-              <AsideFilter
-                title='Example'
-                options={exampleTeste}
-                selected={example}
-                setSelected={setExample}
-              />
-            </AsideContainerFilter>}
+      <Container>
+        {innerWidth > 1000
+          &&
+          <AsideContainerFilter>
+            <AsideFilter
+              title='Brands'
+              options={brandsShoes}
+              selected={selectedBrand}
+              setSelected={setSelectedBrand}
+            />
+            <AsideFilter
+              title='Example'
+              options={exampleTeste}
+              selected={example}
+              setSelected={setExample}
+            />
+          </AsideContainerFilter>}
 
 
-            <SectionProducts>
-              <Header>
-                <PageSummary>
-                  <h1>
-                    MEN&apos;S TENNIS
-                  </h1>
-                  <p>
-                    Sneakers bets on current collections, always keeping an eye on the market, bringing technologies that offer comfort and safety when walking. And to provide the best for your feet, you will find models with extra soft finishes, lightness, flexibility, stability when walking and smart measurements. Every detail thought to offer shoes with the quality you deserve.
-                  </p>
+        <SectionProducts>
+          <Header>
+            <PageSummary>
+              <h1>
+                MEN&apos;S TENNIS
+              </h1>
+              <p>
+                Sneakers bets on current collections, always keeping an eye on the market, bringing technologies that offer comfort and safety when walking. And to provide the best for your feet, you will find models with extra soft finishes, lightness, flexibility, stability when walking and smart measurements. Every detail thought to offer shoes with the quality you deserve.
+              </p>
 
-                  <p>
-                    Now you can be represented with models for all occasions: day to day, walking, work, school, gym, performance or running.
-                  </p>
-                </PageSummary>
+              <p>
+                Now you can be represented with models for all occasions: day to day, walking, work, school, gym, performance or running.
+              </p>
+            </PageSummary>
 
-                <ContainerFilter>
-                  <ShowingResults>
-                    Showing: <strong>{newProductList.length}</strong> results
-                  </ShowingResults>
+            <ContainerFilter>
+              <ShowingResults>
+                Showing: <strong>{newProductList.length}</strong> results
+              </ShowingResults>
 
-                  <ControlFilter>
-                    {innerWidth < 1000
-                      && <>
-                        <ButtonGridMobile
-                          selected={selected}
-                          setSelected={setSelected}
-                        />
-
-                        <ButtonModalFilter
-                          tabIndex={0}
-                          onClick={handleModalFilter}
-                        >
-                          <BiFilterAlt size={18} />
-                          Filters
-                        </ButtonModalFilter>
-
-                        <FilterModal
-                          modalFilter={modalFilter}
-                          setModalFilter={setModalFilter}
-                        >
-                          <AsideFilter
-                            title='Filter by order'
-                            options={orderItems}
-                            selected={sortFilter}
-                            setSelected={setSortFilter}
-                          />
-                          <AsideFilter
-                            title='Brands'
-                            options={brandsShoes}
-                            selected={selectedBrand}
-                            setSelected={setSelectedBrand}
-                          />
-                          <AsideFilter
-                            title='Example'
-                            options={exampleTeste}
-                            selected={example}
-                            setSelected={setExample}
-                          />
-                          <AsideFilter
-                            title='Example 2'
-                            options={exampleTeste}
-                            selected={example}
-                            setSelected={setExample}
-                          />
-                        </FilterModal>         
-                      </>
-                    }
-
-                    {innerWidth > 1000
-                      && <>
-                        <LabelFilter>
-                          Order by
-                        </LabelFilter>
-
-                        <Filter
-                          filterDefault="Filter by order"
-                          options={orderItems}
-                          selected={sortFilter}
-                          setSelected={setSortFilter}
-                        />
-                      </>
-                    }
-                  </ControlFilter>
-                </ContainerFilter>
-              </Header>
-
-              <ListContainer
-                className={selected}
-                data-version={selected}
-              >
-                {newProductList.map((product: IProduct) => (
-                  <ListItem key={product.id}>
-                    <CardItem
-                      key={product.id}
-                      product={product}
-                      gridColumn={selected}
+              <ControlFilter>
+                {innerWidth < 1000
+                  && <>
+                    <ButtonGridMobile
+                      selected={selected}
+                      setSelected={setSelected}
                     />
-                  </ListItem>
-                ))}
-              </ListContainer>
-            </SectionProducts>
-          </Container>
-        </>
-      }
-    </>
 
+                    <ButtonModalFilter
+                      tabIndex={0}
+                      onClick={handleModalFilter}
+                    >
+                      <BiFilterAlt size={18} />
+                      Filters
+                    </ButtonModalFilter>
+
+                    <FilterModal
+                      modalFilter={modalFilter}
+                      setModalFilter={setModalFilter}
+                    >
+                      <AsideFilter
+                        title='Filter by order'
+                        options={orderItems}
+                        selected={sortFilter}
+                        setSelected={setSortFilter}
+                      />
+                      <AsideFilter
+                        title='Brands'
+                        options={brandsShoes}
+                        selected={selectedBrand}
+                        setSelected={setSelectedBrand}
+                      />
+                      <AsideFilter
+                        title='Example'
+                        options={exampleTeste}
+                        selected={example}
+                        setSelected={setExample}
+                      />
+                      <AsideFilter
+                        title='Example 2'
+                        options={exampleTeste}
+                        selected={example}
+                        setSelected={setExample}
+                      />
+                    </FilterModal>
+                  </>
+                }
+
+                {innerWidth > 1000
+                  && <>
+                    <LabelFilter>
+                      Order by
+                    </LabelFilter>
+
+                    <Filter
+                      filterDefault="Filter by order"
+                      options={orderItems}
+                      selected={sortFilter}
+                      setSelected={setSortFilter}
+                    />
+                  </>
+                }
+              </ControlFilter>
+            </ContainerFilter>
+          </Header>
+
+          <ListContainer
+            className={selected}
+            data-version={selected}
+          >
+            {loading && <Spinner />}
+            {!loading && newProductList.map((product: IProduct) => (
+              <ListItem key={product.id}>
+                <CardItem
+                  key={product.id}
+                  product={product}
+                  gridColumn={selected}
+                />
+              </ListItem>
+            ))}
+          </ListContainer>
+        </SectionProducts>
+      </Container>
+    </>
   );
 };
 

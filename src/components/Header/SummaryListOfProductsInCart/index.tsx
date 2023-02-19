@@ -20,6 +20,7 @@ import {
 } from './SummaryListOfProductsInCart';
 
 import IconDelete from 'components/svgs/IconDelete';
+import { memo } from 'react';
 
 const SummaryListOfProductsInCart = () => {
   const { listCart, handlerRemoveProductCart } = useCartContext();
@@ -77,4 +78,4 @@ const SummaryListOfProductsInCart = () => {
   );
 };
 
-export default SummaryListOfProductsInCart;
+export default memo(SummaryListOfProductsInCart);

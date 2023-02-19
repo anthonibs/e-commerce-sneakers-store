@@ -34,3 +34,37 @@ export const ListItem = styled.li`
   height: 100%;
   width: 100%;
 `;
+
+
+export const CategoryContainer = styled.section`
+  height: 100%;
+  max-width: 1400px;
+  margin-top: 2rem;
+  width: 100%;
+
+  & + & {
+    margin-top: 3rem;
+  }
+`;
+
+export const Title = styled.h2`
+  color: ${({theme}) => theme.colors.neutral[600]};
+  font-size: 1.825rem;
+  letter-spacing: 2px;
+  position: relative;
+  width: fit-content;
+
+  &::after {
+    bottom: -8px;
+    background-color: ${({theme}) => theme.colors.primary[100]};
+    border-radius: 10px;
+    content: '';
+    display: flex;
+    flex-direction: column;
+    height: 5px;
+    left: 0;
+    position: absolute;
+    width: 76%;
+  }
+`;
+

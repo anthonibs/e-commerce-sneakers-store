@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useCartContext } from 'shared/hooks/useCart';
 
@@ -49,6 +49,7 @@ const Header = () => {
   }
 
   const isProductCart = quantity?.totalQuantity === undefined || quantity?.totalQuantity === 0 ? true : false;
+  const widthScreen = window.innerWidth < 1000;
 
   return (
     <HeaderContainer>
@@ -60,26 +61,26 @@ const Header = () => {
         </LogoContainer>
 
         <ControlNavLink>
-          <ButtonMenuMobile 
+          <ButtonMenuMobile
             aria-label='Open mobile menu'
             data-menu={openMenuHamburger}
             onClick={() => setOpenMenuHamburger(prevState => !prevState)}
           >
-            {openMenuHamburger 
-              ? <IconClose/> 
+            {openMenuHamburger
+              ? <IconClose />
               : <IconMenu />}
           </ButtonMenuMobile>
 
 
-          <Navbar 
+          <Navbar
             aria-label='Navigation menu'
             openMenu={openMenuHamburger}
-            aria-hidden={!openMenuHamburger}
-          > 
+            aria-hidden={widthScreen ? !openMenuHamburger : false}
+          >
             <BoxShadowModal
               aria-hidden
               onClick={() => setOpenMenuHamburger(prevState => !prevState)}
-              className={openMenuHamburger ? 'box-shadow' : 'box-shadow-out'} 
+              className={openMenuHamburger ? 'box-shadow' : 'box-shadow-out'}
             />
 
             <NavLink
@@ -120,7 +121,7 @@ const Header = () => {
         </ControlNavLink>
 
 
-        <ProfileContainer>        
+        <ProfileContainer>
           <ButtonContainerCart
             cartHover={onCartHover}
             onMouseEnter={handlerEnterCartField}
@@ -128,7 +129,7 @@ const Header = () => {
           >
             <ShoppingCart
               tabIndex={0}
-              aria-labelledby='cart-summary'  
+              aria-labelledby='cart-summary'
               disabled={isProductCart}
               onClick={handlerNavigateToCart}
             >

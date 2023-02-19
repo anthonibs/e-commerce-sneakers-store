@@ -34,20 +34,28 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
+  width: 100%;
+  height: 100%;
+  position: absolute;
   top: 0;
   left: 0;
   backdrop-filter: blur(1px);
   z-index: 9999;
-  background: ${({theme}) => theme.colors.neutral[700]};
 
-  .socket{
-    width: 200px;
-    height: 200px;
-    position: relative;
-    top: -30px;
+  @media (min-width: 375px) {
+    .socket {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      top: -30px;
+      transform: scale(.5);
+    } 
+  }
+  
+  @media (min-width: 1000px) {
+    .socket {
+      transform: scale(1);
+    } 
   }
   
   .hex-brick{

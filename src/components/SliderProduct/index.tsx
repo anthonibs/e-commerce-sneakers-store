@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 
 import IconClose from 'components/svgs/IconClose';
 import IconNext from 'components/svgs/IconNext';
@@ -37,7 +37,8 @@ const SliderProduct = ({ thumbnail, slider, title }: ISliderProduct) => {
     setIndexImage(index);
   }, []);
 
-  const previousSlider = useCallback((index: number) => {
+
+  const previousSlider = useCallback((index: number) => {  
     if (index > 0) {
       setIndexImage(prevState => prevState - 1);
     }
@@ -56,18 +57,13 @@ const SliderProduct = ({ thumbnail, slider, title }: ISliderProduct) => {
     }
   }, [slider?.length]);
 
-  const width = window.innerWidth;
 
-  const innerWidth = useMemo(() => {
-    return width;
-  }, [width]);
-
-
-  function handleEnableAndDisableButton(event: React.KeyboardEvent, item: number) {
+  const handleEnableAndDisableButton = (event: React.KeyboardEvent, item: number) => {
     if(event.key === 'Enter') openImageIndex(item);
     if(event.key === 'Escape') setOverlayImageProduct(false);
-  }
-
+  };
+  
+  const width = window.innerWidth;
 
   return (
     <Container>
@@ -78,7 +74,7 @@ const SliderProduct = ({ thumbnail, slider, title }: ISliderProduct) => {
           </ButtonControl>
         </PreviousSlider>
 
-        {innerWidth < 1000
+        {width < 1000
           ?
           <ImageModalMain
             src={`/assets/products-shoes/${slider?.[indexImage]}.webp`}
@@ -97,7 +93,7 @@ const SliderProduct = ({ thumbnail, slider, title }: ISliderProduct) => {
         </NextSlider>
       </MainProductImage>
 
-      {innerWidth
+      {width
         &&
         <GalleriesProducts>
           {slider
