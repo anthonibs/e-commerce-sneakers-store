@@ -3,7 +3,7 @@ import HttpsServer from './utils/HttpsServer';
 
 
 class ProductService {
-  httpClients: HttpsServer;
+  private httpClients: HttpsServer;
 
   constructor() {
     // As api mocki is a paid platform and creates fake API with paying endpoints, I decided to use json-sever to create api locally to make the individual request.
