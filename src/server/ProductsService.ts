@@ -2,7 +2,7 @@ import { IProduct } from 'shared/interfaces/ProductsInterfaces';
 import HttpsServer from './utils/HttpsServer';
 
 class ProductsService {
-  httpClients: HttpsServer;
+  private httpClients: HttpsServer;
 
   constructor() {
     // Fake API hosting to display all products on screen, using mockapi.
