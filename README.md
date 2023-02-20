@@ -80,15 +80,20 @@ You can access the project's source code by [download](https://github.com/anthon
 
 <h3 id="print-screen-for-mobile-devices-tablets-and-desktops">Print Screen (For Mobile Devices, Tablets and Desktops)</h3>
 <h4 id="mobile">📱 Mobile</h4>
-![enter image description here](https://i.postimg.cc/rm18XLYq/Captura-de-tela-de-2023-02-13-23-30-03.png)![enter image description here](https://i.postimg.cc/4dkJS3P8/Captura-de-tela-de-2023-02-13-23-30-38.png)
+
+![](https://i.postimg.cc/ncypzrbn/Captura-de-tela-de-2023-02-13-23-44-47.png)
+
 <br/>
 <h4 id="tablet">💻 Tablet<h4>
-![enter image description here](https://i.postimg.cc/yNBKmG85/Captura-de-tela-de-2023-02-13-23-43-12.png)
-![enter image description here](https://i.postimg.cc/JzjmB8MZ/Captura-de-tela-de-2023-02-13-23-43-57.png)
-![enter image description here](https://i.postimg.cc/ncypzrbn/Captura-de-tela-de-2023-02-13-23-44-47.png)
+
+![](https://i.postimg.cc/yNBKmG85/Captura-de-tela-de-2023-02-13-23-43-12.png)
+![](https://i.postimg.cc/JzjmB8MZ/Captura-de-tela-de-2023-02-13-23-43-57.png)
+![](https://i.postimg.cc/ncypzrbn/Captura-de-tela-de-2023-02-13-23-44-47.png)
+
 <br/>
 <h4 id="desktop">🖥️ Desktop</h4>
-![enter image description here](https://i.postimg.cc/28bCrvtH/Captura-de-tela-de-2023-02-13-23-45-41.png)
+
+![](https://i.postimg.cc/28bCrvtH/Captura-de-tela-de-2023-02-13-23-45-41.png)
 
 <h2 id="want-to-help-us-contribute">🗂️ Want to help us contribute?</h2>
 
