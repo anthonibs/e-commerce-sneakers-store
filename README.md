@@ -1,7 +1,9 @@
 
 [![banner-e-commer-store-sneakers-banner-sneakers-1.png](https://i.postimg.cc/JhcLWWWf/banner-e-commer-store-sneakers-banner-sneakers-1.png)](https://postimg.cc/7C6cgdh9)
 ] 
+
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/anthonibs/e-commerce-sneakers-store?color=green&label=version) ![GitHub](https://img.shields.io/github/license/anthonibs/e-commerce-sneakers-store?color=green) ![GitHub repo size](https://img.shields.io/github/repo-size/anthonibs/e-commerce-sneakers-store?color=green)  ![GitHub last commit](https://img.shields.io/github/last-commit/anthonibs/e-commerce-sneakers-store?color=green)
+
 Documentation in PT-BR (📃[Documentação em PT-BR](https://github.com/anthonibs/e-commerce-sneakers-store/blob/main/README-PT-BR.md))
 
 # E-COMMERCE-SNEAKERS-STORE  
@@ -22,18 +24,18 @@ On the Men page, the user can sort products by brand, highest rating, lowest and
 
 ## 📑 Index
 
--   [Overview](#👨‍💻-overview)
-	- [Access to project demo](#🔗-access-to-project-demo)
-	- [What users are able to do](#🧞-what-users-should-be-able-to-do)
-- [Project development](#🚀-project-development)
+-   [Overview](#overview)
+	- [Access to project demo](#access-to-project-demo)
+	- [What users are able to do](#what-users-should-be-able-to-do)
+- [Project development](#project-development)
     -   [ Built with](#built-with)
     -   [Print Screen](#print-screen-for-mobile-devices-tablets-and-desktops)
-	    - [Mobile](#📱-mobile)
-	    - [Tablet](#💻-tablet)
-	    - [Desktop](#🖥️-desktop)
- - [Want to help us contribute?](#🗂️-want-to-help-us-contribute)
- - [License](#📙-license)
--  [Author](#✏️-author)
+	    - [Mobile](#mobile)
+	    - [Tablet](#tablet)
+	    - [Desktop](#desktop)
+ - [Want to help us contribute?](#want-to-help-us-contribute)
+ - [License](#license)
+-  [Author](#author)
 
 
 ## 👨‍💻 Overview
@@ -47,13 +49,13 @@ You can access the project's source code by [download](https://github.com/anthon
 
 ### 🧞 What users should be able to do:
 
--   View the site depending on your device screen size;
--   See hover states for all interactive elements on the page;
--   Open a lightbox gallery by clicking on the large product image on screens greater than 1000px wide;
--   Change the large product image by clicking on the small thumbnail images;
--   Add items to cart;
+- View the site depending on your device screen size;
+- See hover states for all interactive elements on the page;
+- Open a lightbox gallery by clicking on the large product image on screens greater than 1000px wide;
+- Change the large product image by clicking on the small thumbnail images;
+- Add items to cart;
 - Remove item from cart and remove all items;
--   View the cart and remove items from it;
+- View the cart and remove items from it;
 - Navigate through the links in the navigation bar;
 - Pages with contents, Home, Mens and Shopping carts;
 - Filter products by brands, most rated, lowest and highest price;
@@ -63,17 +65,17 @@ You can access the project's source code by [download](https://github.com/anthon
 ## 🚀 Project development
 ### Built with:
 
--   Semantic HTML5 markup;
--   CSS3 custom properties;
--   Flexbox;
--   Grid CSS;
--   [React](https://reactjs.org/) - JS library;
--   [Styled-components](https://styled-components.com/) - for styles;
--   Fetch Api;
+- Semantic HTML5 markup;
+- CSS3 custom properties;
+- Flexbox;
+- Grid CSS;
+- [React](https://reactjs.org/) - JS library;
+- [Styled-components](https://styled-components.com/) - for styles;
+- Fetch Api;
 - [Mockapi](https://mockapi.io/) - Host Faker API for products and categories;
 -	[React Router](https://reactrouter.com/en/main);
 -	Context Api;
--  Typescript e
+- Typescript e
 - Tools for standardization and code eligibility;
 
 
@@ -105,6 +107,7 @@ This project is under license. See the [MIT](https://github.com/anthonibs/e-comm
 			<td>
 			<div style="text-align:center">
 			<figure class="image" style="display:inline-block"><img alt="Profile owner picture Anthoni Broering dos Santos" height="256" src="https://avatars.githubusercontent.com/u/77931577?v=4" width="256" />
+      <br>
 			<figcaption><a href="https://github.com/anthonibs">Anthoni Broering dos Santos</a></figcaption>
 			</figure>
 			</div>
