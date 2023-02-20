@@ -1,96 +1,118 @@
-# Frontend Mentor - E-commerce product page
 
-![Design preview for the E-commerce product page coding challenge](./design/desktop-preview.jpg)
+[![banner-e-commer-store-sneakers-banner-sneakers-1.png](https://i.postimg.cc/JhcLWWWf/banner-e-commer-store-sneakers-banner-sneakers-1.png)](https://postimg.cc/7C6cgdh9)
+] 
+![GitHub package.json version](https://img.shields.io/github/package-json/v/anthonibs/e-commerce-sneakers-store?color=green&label=version) ![GitHub](https://img.shields.io/github/license/anthonibs/e-commerce-sneakers-store?color=green) ![GitHub repo size](https://img.shields.io/github/repo-size/anthonibs/e-commerce-sneakers-store?color=green)  ![GitHub last commit](https://img.shields.io/github/last-commit/anthonibs/e-commerce-sneakers-store?color=green)
+Documentation in PT-BR (📃[Documentação em PT-BR](https://github.com/anthonibs/e-commerce-sneakers-store/blob/main/README-PT-BR.md))
 
-## Welcome! 👋
+# E-COMMERCE-SNEAKERS-STORE  
 
-Thanks for checking out this front-end coding challenge.
+## 💡 Objective
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+The objectives of the challenge proposed by [Frontendmentor](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6) must make a page where the user can add items to the cart, pass images and open the image modal. I wanted to go further and apply the knowledge gained in the courses  [Alura](https://www.alura.com.br/) and [JStack](https://jstack.com.br/).
 
-**To do this challenge, you need a good understanding of HTML, CSS and JavaScript.**
+![](https://lh6.googleusercontent.com/h71WFvfWgPxGHr2IKIPdizeSbFeWqPHuiqg5glrvBmX6ksdKdKhVt23xydxWhHqjlPWIZtMiT1AyN9QclPbOROvQ_V8JJoSCeurpdQJWNVULlKkE8LmgcvyQ3QRqa9ZX2BP8mS1XlhLf41mpD5p0FkU)
 
-## The challenge
+The core objective was to create a functional website structure where the user can browse, add and remove products from cart, filter by brand and price.
 
-Your challenge is to build out this e-commerce product page and get it looking as close to the design as possible.
+On the home page, the user can navigate the banner and perform the slide action, in the categories section three categories will be randomly rendered and the user can swipe product cards by clicking on the arrows or dragging the cards to the side;
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+On the Men page, the user can sort products by brand, highest rating, lowest and highest price. Clicking on a product redirects the user to that product's page for more information. When adding products to the cart and the mouse to the cart icon, a brief summary of the added products opens and it is possible to remove them.
 
-Your users should be able to:
+> “Failure is no reason to give up, as long as you keep believing.” - Naruto Uzumaki
 
-- View the optimal layout for the site depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Open a lightbox gallery by clicking on the large product image
-- Switch the large product image by clicking on the small thumbnail images
-- Add items to the cart
-- View the cart and remove items from it
+## 📑 Index
 
-Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
+-   [Overview](#👨‍💻-overview)
+	- [Access to project demo](#🔗-access-to-project-demo)
+	- [What users are able to do](#🧞-what-users-should-be-able-to-do)
+- [Project development](#🚀-project-development)
+    -   [ Built with](#built-with)
+    -   [Print Screen](#print-screen-for-mobile-devices-tablets-and-desktops)
+	    - [Mobile](#📱-mobile)
+	    - [Tablet](#💻-tablet)
+	    - [Desktop](#🖥️-desktop)
+ - [Want to help us contribute?](#🗂️-want-to-help-us-contribute)
+ - [License](#📙-license)
+-  [Author](#✏️-author)
 
-## Where to find everything
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design.
+## 👨‍💻 Overview
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`.
+### 🔗 Access to project demo
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+You can access the project's source code by [download](https://github.com/anthonibs/e-commerce-sneakers-store/archive/refs/heads/main.zip).
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+- Solution URL: [add solution URL here](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6)
+- Live Website URL: [Add Live Website URL Here](https://e-commerce-sneakers-store.vercel.app/)
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+### 🧞 What users should be able to do:
 
-## Building your project
+-   View the site depending on your device screen size;
+-   See hover states for all interactive elements on the page;
+-   Open a lightbox gallery by clicking on the large product image on screens greater than 1000px wide;
+-   Change the large product image by clicking on the small thumbnail images;
+-   Add items to cart;
+- Remove item from cart and remove all items;
+-   View the cart and remove items from it;
+- Navigate through the links in the navigation bar;
+- Pages with contents, Home, Mens and Shopping carts;
+- Filter products by brands, most rated, lowest and highest price;
+- Displays products in three different grid styles, in rows, columns and full image. Works on screens less than 1000px wide;
+- Summary of the list of products added to the shopping cart;
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+## 🚀 Project development
+### Built with:
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+-   Semantic HTML5 markup;
+-   CSS3 custom properties;
+-   Flexbox;
+-   Grid CSS;
+-   [React](https://reactjs.org/) - JS library;
+-   [Styled-components](https://styled-components.com/) - for styles;
+-   Fetch Api;
+- [Mockapi](https://mockapi.io/) - Host Faker API for products and categories;
+-	[React Router](https://reactrouter.com/en/main);
+-	Context Api;
+-  Typescript e
+- Tools for standardization and code eligibility;
 
-## Deploying your project
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+### Print Screen (For Mobile Devices, Tablets and Desktops)
+#### 📱 Mobile
+![enter image description here](https://i.postimg.cc/rm18XLYq/Captura-de-tela-de-2023-02-13-23-30-03.png)![enter image description here](https://i.postimg.cc/4dkJS3P8/Captura-de-tela-de-2023-02-13-23-30-38.png)
+<br/>
+#### 💻 Tablet
+![enter image description here](https://i.postimg.cc/yNBKmG85/Captura-de-tela-de-2023-02-13-23-43-12.png)
+![enter image description here](https://i.postimg.cc/JzjmB8MZ/Captura-de-tela-de-2023-02-13-23-43-57.png)
+![enter image description here](https://i.postimg.cc/ncypzrbn/Captura-de-tela-de-2023-02-13-23-44-47.png)
+<br/>
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+#### 🖥️ Desktop
+![enter image description here](https://i.postimg.cc/28bCrvtH/Captura-de-tela-de-2023-02-13-23-45-41.png)
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+## 🗂️ Want to help us contribute?
 
-## Create a custom `README.md`
+Do you want to be part of this project? Click [HERE](https://github.com/anthonibs/e-commerce-sneakers-store/blob/main/CONTRIBUTING.md) and read how to contribute.
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+## 📙 License
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+This project is under license. See the [MIT](https://github.com/anthonibs/e-commerce-sneakers-store/blob/main/LICENSE) file for more details.
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+## ✏️ Author
+<table border="1" cellpadding="1" cellspacing="1" style="width:300px">
+	<tbody>
+		<tr>
+			<td>
+			<div style="text-align:center">
+			<figure class="image" style="display:inline-block"><img alt="Profile owner picture Anthoni Broering dos Santos" height="256" src="https://avatars.githubusercontent.com/u/77931577?v=4" width="256" />
+			<figcaption><a href="https://github.com/anthonibs">Anthoni Broering dos Santos</a></figcaption>
+			</figure>
+			</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
 
-## Submitting your solution
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
-
-## Sharing your solution
-
-There are multiple places you can share your solution:
-
-1. Share your solution page in the **#finished-projects** channel of the [Slack community](https://www.frontendmentor.io/slack). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
-
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+[🔝 Back to the top](#e-commerce-sneakers-store)
