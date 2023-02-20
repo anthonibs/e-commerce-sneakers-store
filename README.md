@@ -1,14 +1,13 @@
 
 [![banner-e-commer-store-sneakers-banner-sneakers-1.png](https://i.postimg.cc/JhcLWWWf/banner-e-commer-store-sneakers-banner-sneakers-1.png)](https://postimg.cc/7C6cgdh9)
-] 
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/anthonibs/e-commerce-sneakers-store?color=green&label=version) ![GitHub](https://img.shields.io/github/license/anthonibs/e-commerce-sneakers-store?color=green) ![GitHub repo size](https://img.shields.io/github/repo-size/anthonibs/e-commerce-sneakers-store?color=green)  ![GitHub last commit](https://img.shields.io/github/last-commit/anthonibs/e-commerce-sneakers-store?color=green)
 
 Documentation in PT-BR (📃[Documentação em PT-BR](https://github.com/anthonibs/e-commerce-sneakers-store/blob/main/README-PT-BR.md))
 
-# E-COMMERCE-SNEAKERS-STORE  
+<h1 id="e-commerce-sneakers-store">E-COMMERCE-SNEAKERS-STORE</h1>
 
-## 💡 Objective
+<h2>💡 Objective</h2>
 
 The objectives of the challenge proposed by [Frontendmentor](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6) must make a page where the user can add items to the cart, pass images and open the image modal. I wanted to go further and apply the knowledge gained in the courses  [Alura](https://www.alura.com.br/) and [JStack](https://jstack.com.br/).
 
@@ -38,16 +37,16 @@ On the Men page, the user can sort products by brand, highest rating, lowest and
 -  [Author](#author)
 
 
-## 👨‍💻 Overview
+<h2 id="overview">👨‍💻 Overview</h2>
 
-### 🔗 Access to project demo
+<h3 id="access-to-project-demo">🔗 Access to project demo<h3>
 
 You can access the project's source code by [download](https://github.com/anthonibs/e-commerce-sneakers-store/archive/refs/heads/main.zip).
 
 - Solution URL: [add solution URL here](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6)
 - Live Website URL: [Add Live Website URL Here](https://e-commerce-sneakers-store.vercel.app/)
 
-### 🧞 What users should be able to do:
+<h3 id="what-users-should-be-able-to-do">🧞 What users should be able to do:</h3>
 
 - View the site depending on your device screen size;
 - See hover states for all interactive elements on the page;
@@ -62,8 +61,8 @@ You can access the project's source code by [download](https://github.com/anthon
 - Displays products in three different grid styles, in rows, columns and full image. Works on screens less than 1000px wide;
 - Summary of the list of products added to the shopping cart;
 
-## 🚀 Project development
-### Built with:
+<h2 id="project-development">🚀 Project development</h2>
+<h3 id="built-with"> Built with:</h3>
 
 - Semantic HTML5 markup;
 - CSS3 custom properties;
@@ -79,28 +78,27 @@ You can access the project's source code by [download](https://github.com/anthon
 - Tools for standardization and code eligibility;
 
 
-### Print Screen (For Mobile Devices, Tablets and Desktops)
-#### 📱 Mobile
+<h3 id="print-screen-for-mobile-devices-tablets-and-desktops">Print Screen (For Mobile Devices, Tablets and Desktops)</h3>
+<h4 id="mobile">📱 Mobile</h4>
 ![enter image description here](https://i.postimg.cc/rm18XLYq/Captura-de-tela-de-2023-02-13-23-30-03.png)![enter image description here](https://i.postimg.cc/4dkJS3P8/Captura-de-tela-de-2023-02-13-23-30-38.png)
 <br/>
-#### 💻 Tablet
+<h4 id="tablet">💻 Tablet<h4>
 ![enter image description here](https://i.postimg.cc/yNBKmG85/Captura-de-tela-de-2023-02-13-23-43-12.png)
 ![enter image description here](https://i.postimg.cc/JzjmB8MZ/Captura-de-tela-de-2023-02-13-23-43-57.png)
 ![enter image description here](https://i.postimg.cc/ncypzrbn/Captura-de-tela-de-2023-02-13-23-44-47.png)
 <br/>
-
-#### 🖥️ Desktop
+<h4 id="desktop">🖥️ Desktop</h4>
 ![enter image description here](https://i.postimg.cc/28bCrvtH/Captura-de-tela-de-2023-02-13-23-45-41.png)
 
-## 🗂️ Want to help us contribute?
+<h2 id="want-to-help-us-contribute">🗂️ Want to help us contribute?</h2>
 
 Do you want to be part of this project? Click [HERE](https://github.com/anthonibs/e-commerce-sneakers-store/blob/main/CONTRIBUTING.md) and read how to contribute.
 
-## 📙 License
+<h2 id="license">📙 License</h2>
 
 This project is under license. See the [MIT](https://github.com/anthonibs/e-commerce-sneakers-store/blob/main/LICENSE) file for more details.
 
-## ✏️ Author
+<h2 id="author">✏️ Author<h2>
 <table border="1" cellpadding="1" cellspacing="1" style="width:300px">
 	<tbody>
 		<tr>
