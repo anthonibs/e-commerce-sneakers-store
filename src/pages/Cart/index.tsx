@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { HiMinus, HiPlus, HiTrash } from 'react-icons/hi';
 
-import { useCartContext } from 'shared/hooks/useCart';
+import { useCartContext } from 'shared/context/useCart';
 import { IProduct } from 'shared/interfaces/ProductsInterfaces';
 import priceFormatted from 'shared/utils/priceFormatted';
 

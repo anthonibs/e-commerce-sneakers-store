@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from 'styles/GlobalStyles';
 import themeStyle from 'styles/theme';
 import AppRoutes from 'routes';
-import { CartProvider } from 'shared/hooks/useCart';
+import { CartProvider } from 'shared/context/useCart';
 
 
 const root = ReactDOM.createRoot(

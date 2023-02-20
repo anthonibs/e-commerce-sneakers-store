@@ -2,57 +2,21 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   margin-top: 1em;
+  height: 380px;
 
-  @media (min-width: 375px) {
-    .slick-slider {
-      height: 380px;
-      width: 100%;
-      cursor: grabbing;
-    }
-
-    .slick-active, .slick-list {
-      height: 380px;
-    }
-
-    .slick-prev {
-      left: 0;
-    }
-
-    .slick-next {
-     right: 0;
-    } 
+  .slick-slider, .slick-list, .slick-track {
+    height: 100%;
+    width: 100%;
   }
 
-  @media (min-width: 500px) {
-    .slick-slider {
-      height: 450px;
-      width: 100%;
-      cursor: grabbing;
-    }
-
-    .slick-active, .slick-list {
-      height: 450px;
-    }
+  .slick-prev {
+    left: 0;
   }
 
-  @media (min-width: 768px) {
-    .slick-slider {
-      height: 500px;
-    }
-
-    .slick-active, .slick-list {
-      height: 500px;
-    }
-
-    .slick-prev {
-      left: -23px;
-    }
-
-    .slick-next {
-     right: -23px;
-    } 
-  }
-
+  .slick-next {
+    right: 0;
+  } 
+  
   .slick-prev,
   .slick-next {
     height: 28px;
@@ -75,8 +39,19 @@ export const Container = styled.div`
     opacity: .7;
     color: ${({theme}) => theme.colors.primary[100]};
   }
-`;
 
+  @media (min-width: 768px) {
+    height: 500px;
+
+    .slick-prev {
+      left: -23px;
+    }
+
+    .slick-next {
+     right: -23px;
+    } 
+  }
+`;
 
 export const Card = styled.div`
   margin-top: 1.6rem;

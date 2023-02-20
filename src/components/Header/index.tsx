@@ -1,6 +1,6 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { useCartContext } from 'shared/hooks/useCart';
+import { useCartContext } from 'shared/context/useCart';
 
 import {
   BoxShadowModal,

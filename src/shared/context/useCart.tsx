@@ -44,7 +44,7 @@ export const useCartContext = () => {
   const { listCart, setListCart, quantity, setQuantity } = useContext<any>(CartContext);
 
 
-  function changeQuantity(id: string, quantity: number) {
+  function changeQuantity(id: string, quantity: number): IProduct[] {
     return listCart.map((product: IProduct) => {
       if (product.id === id) product.quantity += quantity;
       return product;

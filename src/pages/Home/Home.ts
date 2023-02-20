@@ -37,7 +37,6 @@ export const ListItem = styled.li`
 
 
 export const CategoryContainer = styled.section`
-  height: 100%;
   max-width: 1400px;
   margin-top: 2rem;
   width: 100%;

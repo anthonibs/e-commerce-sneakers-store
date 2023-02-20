@@ -142,7 +142,6 @@ export const ButtonModalFilter = styled.button`
 export const ListContainer = styled.ul`
   @media (min-width: 375px) {
     display: grid;
-    min-height: 350px;
     height: fit-content;
     grid-area: product;
     gap: 2rem .825rem;

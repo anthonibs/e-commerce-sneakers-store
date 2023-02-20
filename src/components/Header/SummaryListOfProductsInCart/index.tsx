@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useCartContext } from 'shared/hooks/useCart';
+import { useCartContext } from 'shared/context/useCart';
 import { IProduct } from 'shared/interfaces/ProductsInterfaces';
 import priceFormatted from 'shared/utils/priceFormatted';
 

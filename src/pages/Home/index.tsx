@@ -11,7 +11,6 @@ import ProductsService from 'server/ProductsService';
 import { ICategories } from 'shared/interfaces/CategoryInterfaces';
 import CategoriesService from 'server/CategoriesService';
 import SliderCategory from 'components/SliderCategory';
-import ScrollToTop from 'components/ScrollToTop';
 
 
 const Home = () => {
@@ -70,8 +69,6 @@ const Home = () => {
 
   return (
     <Container>
-      <ScrollToTop />
-
       {!loading
         &&
         <>

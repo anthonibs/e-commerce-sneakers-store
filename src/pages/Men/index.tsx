@@ -27,7 +27,6 @@ import ButtonGridMobile from 'components/ButtonGridMobile';
 
 import { BiFilterAlt } from 'react-icons/bi';
 import FilterModal from 'components/FilterModal';
-import ScrollToTop from 'components/ScrollToTop';
 
 const orderItems = ['Relevance', 'Biggest price', 'Lowest price'];
 
@@ -101,8 +100,6 @@ const Men = () => {
 
   return (
     <>
-      <ScrollToTop />
-
       <BannerMain
         height='260px'
         width='100%'

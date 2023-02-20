@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import ProductService from 'server/ProductService';
 
-import { useCartContext } from 'shared/hooks/useCart';
+import { useCartContext } from 'shared/context/useCart';
 import { IProduct } from 'shared/interfaces/ProductsInterfaces';
 import priceFormatted from 'shared/utils/priceFormatted';
 
