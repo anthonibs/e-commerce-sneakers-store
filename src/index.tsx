@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
 
@@ -13,12 +13,14 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={themeStyle}>
-      <GlobalStyles />
-      <CartProvider>
-        <AppRoutes />
-      </CartProvider>
-    </ThemeProvider>
+    <Suspense fallback='Loading...'>
+      <ThemeProvider theme={themeStyle}>
+        <GlobalStyles />
+        <CartProvider>
+          <AppRoutes />
+        </CartProvider>
+      </ThemeProvider>
+    </Suspense>
   </React.StrictMode>
 );
 

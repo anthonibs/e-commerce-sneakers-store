@@ -1,17 +1,19 @@
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import DefaultPage from 'components/DefaultPage';
 
-// // Pages
-import Home from 'pages/Home';
-import NotFound from 'pages/NotFound';
-import Collections from 'pages/Collections';
-import Men from 'pages/Men';
-import Women from 'pages/Women';
-import About from 'pages/About';
-import Contact from 'pages/Contact';
-import Cart from 'pages/Cart';
-import ProductItem from 'components/ProductItem';
+// Pages
+const Home = React.lazy(() => import('pages/Home'));
+const NotFound = React.lazy(() => import('pages/NotFound'));
+const Collections = React.lazy(() => import('pages/Collections'));
+const Men = React.lazy(() => import('pages/Men'));
+const Women = React.lazy(() => import('pages/Women'));
+const About = React.lazy(() => import('pages/About'));
+const Contact = React.lazy(() => import('pages/Contact'));
+const Cart = React.lazy(() => import('pages/Cart'));
+const ProductItem = React.lazy(() => import('components/ProductItem'));
+
 
 const AppRoutes = () => {
   return (
